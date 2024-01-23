@@ -1,3 +1,5 @@
+import 'package:cash_book_expense_tracker/screens/home_screen/home_screen_body.dart';
+import 'provider/themes_data.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,6 +11,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.light(),
+      darkTheme: ThemeData(
+          appBarTheme: AppBarTheme(color: darkThemeScaffold),
+          scaffoldBackgroundColor: darkThemeScaffold),
+      themeMode: ThemeMode.dark,
+      home: const MyHomeScreenBody(),
+    );
   }
 }
