@@ -1,3 +1,5 @@
+import 'package:cash_book_expense_tracker/screens/home_screen/appbar.dart';
+import 'package:cash_book_expense_tracker/screens/home_screen/current_balance.dart';
 import 'package:flutter/material.dart';
 
 class MyHomeScreenBody extends StatelessWidget {
@@ -6,24 +8,14 @@ class MyHomeScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Icon(
-          Icons.window,
-          color: Colors.white,
-        ),
-        title: const Text(
-          "CASH BOOK",
-          style: TextStyle(
-            fontFamily: "Raleway",
-            fontWeight: FontWeight.bold,
-            fontSize: 14,
-            letterSpacing: 7,
-            color: Colors.white,
-          ),
-        ),
-        centerTitle: true,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(100.0),
+        child: MyAppBar(),
       ),
       drawer: Drawer(),
+      body: Column(children: [
+        MyCurrentBalance(),
+      ]),
     );
   }
 }
