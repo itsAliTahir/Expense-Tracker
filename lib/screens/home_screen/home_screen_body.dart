@@ -1,5 +1,6 @@
 import 'package:cash_book_expense_tracker/screens/home_screen/appbar.dart';
 import 'package:cash_book_expense_tracker/screens/home_screen/current_balance.dart';
+import 'package:cash_book_expense_tracker/screens/home_screen/select_category.dart';
 import 'package:flutter/material.dart';
 
 class MyHomeScreenBody extends StatelessWidget {
@@ -15,6 +16,7 @@ class MyHomeScreenBody extends StatelessWidget {
       drawer: Drawer(),
       body: Column(children: [
         MyCurrentBalance(),
+        MySelectCategory(),
       ]),
     );
   }

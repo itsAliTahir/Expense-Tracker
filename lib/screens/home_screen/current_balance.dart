@@ -1,3 +1,4 @@
+import 'package:cash_book_expense_tracker/provider/themes_data.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_flip_counter/animated_flip_counter.dart';
 
@@ -12,9 +13,11 @@ class _MyCurrentBalanceState extends State<MyCurrentBalance> {
   num temp = 12500;
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return Center(
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+        margin:
+            EdgeInsets.symmetric(horizontal: 15, vertical: screenHeight * 0.02),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -25,7 +28,7 @@ class _MyCurrentBalanceState extends State<MyCurrentBalance> {
               textStyle: const TextStyle(
                   fontFamily: "Raleway", color: Colors.white, fontSize: 34),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             Text(
@@ -33,17 +36,17 @@ class _MyCurrentBalanceState extends State<MyCurrentBalance> {
               style: TextStyle(
                   fontFamily: "Raleway",
                   letterSpacing: 1,
-                  color: Color.fromARGB(255, 83, 86, 109),
+                  color: Theme.of(context).secondaryHeaderColor,
                   fontSize: 13,
                   fontWeight: FontWeight.bold),
             ),
-            TextButton(
-              onPressed: () {
-                temp = temp + 100;
-                setState(() {});
-              },
-              child: Text("data"),
-            )
+            // TextButton(
+            //   onPressed: () {
+            //     temp = temp + 100;
+            //     setState(() {});
+            //   },
+            //   child: const Text("data"),
+            // )
           ],
         ),
       ),
