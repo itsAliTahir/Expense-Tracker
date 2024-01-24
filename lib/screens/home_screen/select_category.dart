@@ -12,11 +12,11 @@ class MySelectCategory extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: screenHeight * 0.055),
       padding: EdgeInsets.only(left: screenWidth * 0.08),
       child: Align(
-        alignment: Alignment.centerLeft,
+        alignment: Alignment.center,
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
@@ -24,7 +24,7 @@ class MySelectCategory extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: "Raleway",
                   fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                  fontSize: 14,
                   letterSpacing: 1,
                 ),
               ),
@@ -36,7 +36,7 @@ class MySelectCategory extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: "Raleway",
                   fontWeight: FontWeight.bold,
-                  fontSize: 14,
+                  fontSize: 12,
                   letterSpacing: 1,
                   color: Theme.of(context).secondaryHeaderColor,
                 ),
@@ -49,7 +49,7 @@ class MySelectCategory extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: "Raleway",
                   fontWeight: FontWeight.bold,
-                  fontSize: 14,
+                  fontSize: 12,
                   letterSpacing: 1,
                   color: Theme.of(context).secondaryHeaderColor,
                 ),

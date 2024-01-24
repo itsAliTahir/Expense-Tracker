@@ -1,3 +1,4 @@
+import 'package:cash_book_expense_tracker/widgets/gradient_box.dart';
 import 'package:flutter/material.dart';
 
 class MyIncomeExpenses extends StatelessWidget {
@@ -6,29 +7,19 @@ class MyIncomeExpenses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    print(screenWidth);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Container(
-          width: screenWidth * 0.4,
-          height: 70,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(7),
-              gradient: const LinearGradient(colors: [
-                Color.fromARGB(255, 156, 128, 241),
-                Color.fromARGB(255, 169, 185, 250)
-              ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
-        ),
-        Container(
-          width: screenWidth * 0.4,
-          height: 70,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(7),
-              gradient: const LinearGradient(colors: [
-                Color.fromARGB(255, 255, 85, 119),
-                Color.fromARGB(255, 251, 146, 131)
-              ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
+        GradientBox(
+            title: "1200",
+            subTitle: "Income",
+            gradient1: Color.fromARGB(255, 156, 128, 241),
+            gradient2: Color.fromARGB(255, 169, 185, 250)),
+        GradientBox(
+          title: "1200",
+          subTitle: "Expense",
+          gradient1: Color.fromARGB(255, 255, 85, 119),
+          gradient2: Color.fromARGB(255, 251, 146, 131),
         ),
       ],
     );

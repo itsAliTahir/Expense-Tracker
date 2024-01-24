@@ -1,5 +1,6 @@
 import 'package:cash_book_expense_tracker/screens/home_screen/appbar.dart';
 import 'package:cash_book_expense_tracker/screens/home_screen/current_balance.dart';
+import 'package:cash_book_expense_tracker/screens/home_screen/floatingactionbutton.dart';
 import 'package:cash_book_expense_tracker/screens/home_screen/income_expenses.dart';
 import 'package:cash_book_expense_tracker/screens/home_screen/select_category.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,8 @@ class MyHomeScreenBody extends StatelessWidget {
         MyIncomeExpenses(),
         MySelectCategory(),
       ]),
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+      floatingActionButton: MyFloatingActionButton(),
     );
   }
 }
