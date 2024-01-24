@@ -10,14 +10,14 @@ class MyCurrentBalance extends StatefulWidget {
 }
 
 class _MyCurrentBalanceState extends State<MyCurrentBalance> {
-  num temp = 12500;
+  num temp = 120;
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     return Center(
       child: Container(
         margin:
-            EdgeInsets.symmetric(horizontal: 15, vertical: screenHeight * 0.02),
+            EdgeInsets.symmetric(horizontal: 15, vertical: screenHeight * 0.04),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -26,10 +26,12 @@ class _MyCurrentBalanceState extends State<MyCurrentBalance> {
               value: temp,
               prefix: "\$",
               textStyle: const TextStyle(
-                  fontFamily: "Raleway", color: Colors.white, fontSize: 34),
+                  fontFamily: "Raleway",
+                  fontSize: 34,
+                  fontWeight: FontWeight.bold),
             ),
             const SizedBox(
-              height: 8,
+              height: 3,
             ),
             Text(
               "Current Balance",

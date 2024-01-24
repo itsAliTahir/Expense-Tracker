@@ -14,7 +14,6 @@ class _MyAppBarState extends State<MyAppBar> {
       leading: IconButton(
         icon: const Icon(
           Icons.window,
-          color: Colors.white,
         ),
         onPressed: () {
           Scaffold.of(context).openDrawer();
@@ -25,9 +24,8 @@ class _MyAppBarState extends State<MyAppBar> {
         style: TextStyle(
           fontFamily: "Raleway",
           fontWeight: FontWeight.bold,
-          fontSize: 14,
+          fontSize: 15,
           letterSpacing: 7,
-          color: Colors.white,
         ),
       ),
       centerTitle: true,

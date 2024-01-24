@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   animated_flip_counter: ^0.2.6
   provider: ^6.1.1
+  fluentui_system_icons: ^1.1.224
 
 dev_dependencies:
   flutter_test:

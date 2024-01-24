@@ -13,14 +13,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.light(),
-      darkTheme: ThemeData(
-          appBarTheme: AppBarTheme(color: darkThemeScaffold),
+      theme: ThemeData(
+          textTheme:
+              const TextTheme(titleLarge: TextStyle(color: Colors.black)),
+          appBarTheme: AppBarTheme(color: lightThemeScaffold),
           drawerTheme:
-              DrawerThemeData(backgroundColor: darkThemeDrawerBackgroundColor),
-          secondaryHeaderColor: darkThemeSecondaryFont,
-          scaffoldBackgroundColor: darkThemeScaffold),
-      themeMode: ThemeMode.dark,
+              DrawerThemeData(backgroundColor: lightThemeDrawerBackgroundColor),
+          secondaryHeaderColor: lightThemeSecondaryFont,
+          scaffoldBackgroundColor: lightThemeScaffold),
+      // darkTheme: ThemeData(
+      //     appBarTheme: AppBarTheme(color: darkThemeScaffold),
+      //     drawerTheme:
+      //         DrawerThemeData(backgroundColor: darkThemeDrawerBackgroundColor),
+      //     secondaryHeaderColor: darkThemeSecondaryFont,
+      //     scaffoldBackgroundColor: darkThemeScaffold),
+      themeMode: ThemeMode.light,
       home: const MyHomeScreenBody(),
     );
   }

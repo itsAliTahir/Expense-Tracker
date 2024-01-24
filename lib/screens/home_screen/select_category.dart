@@ -26,7 +26,6 @@ class MySelectCategory extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
                   letterSpacing: 1,
-                  color: Colors.white,
                 ),
               ),
               SizedBox(
