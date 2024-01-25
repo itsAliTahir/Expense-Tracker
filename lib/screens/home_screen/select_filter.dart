@@ -31,8 +31,9 @@ class MySelectType extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.close),
-                style: ButtonStyle(iconSize: MaterialStatePropertyAll(24)),
+                // icon: Icon(Icons.close),
+                icon: Icon(FluentIcons.filter_12_regular),
+                style: ButtonStyle(iconSize: MaterialStatePropertyAll(20)),
               )
             ],
           ),

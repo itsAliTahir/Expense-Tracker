@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../provider/data_provider.dart';
+import '../../provider/transaction_data_provider.dart';
 
 class MyTransactionsList extends StatelessWidget {
   const MyTransactionsList({super.key});

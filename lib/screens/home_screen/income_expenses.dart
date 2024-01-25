@@ -1,4 +1,4 @@
-import 'package:cash_book_expense_tracker/provider/data_provider.dart';
+import 'package:cash_book_expense_tracker/provider/transaction_data_provider.dart';
 import 'package:cash_book_expense_tracker/widgets/gradient_box.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
