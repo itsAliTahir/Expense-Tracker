@@ -1,6 +1,8 @@
+import 'package:cash_book_expense_tracker/provider/data_provider.dart';
 import 'package:cash_book_expense_tracker/provider/themes_data.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_flip_counter/animated_flip_counter.dart';
+import 'package:provider/provider.dart';
 
 class MyCurrentBalance extends StatefulWidget {
   const MyCurrentBalance({super.key});
@@ -10,10 +12,12 @@ class MyCurrentBalance extends StatefulWidget {
 }
 
 class _MyCurrentBalanceState extends State<MyCurrentBalance> {
-  num temp = 120;
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
+    final CurrentBalance =
+        Provider.of<TransactionDataProvider>(context, listen: false)
+            .CurrentBalance;
     return Center(
       child: Container(
         margin:
@@ -23,7 +27,7 @@ class _MyCurrentBalanceState extends State<MyCurrentBalance> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             AnimatedFlipCounter(
-              value: temp,
+              value: CurrentBalance(),
               prefix: "\$",
               textStyle: const TextStyle(
                   fontFamily: "Raleway",
@@ -42,13 +46,6 @@ class _MyCurrentBalanceState extends State<MyCurrentBalance> {
                   fontSize: 13,
                   fontWeight: FontWeight.bold),
             ),
-            // TextButton(
-            //   onPressed: () {
-            //     temp = temp + 100;
-            //     setState(() {});
-            //   },
-            //   child: const Text("data"),
-            // )
           ],
         ),
       ),

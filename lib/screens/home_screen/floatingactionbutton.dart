@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
 class MyFloatingActionButton extends StatelessWidget {
@@ -7,8 +8,19 @@ class MyFloatingActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       shape: ContinuousRectangleBorder(borderRadius: BorderRadius.circular(38)),
+      backgroundColor: Colors.transparent,
+      hoverColor: Colors.transparent,
+      focusColor: Colors.transparent,
+      foregroundColor: Colors.transparent,
+      splashColor: Colors.transparent,
+      elevation: 2,
+      disabledElevation: 0,
+      hoverElevation: 1.5,
+      highlightElevation: 0,
+      focusElevation: 0,
+      enableFeedback: false,
       onPressed: () {},
-      child: Container(
+      child: Ink(
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
@@ -17,6 +29,11 @@ class MyFloatingActionButton extends StatelessWidget {
               Color.fromARGB(255, 79, 220, 154),
               Color.fromARGB(255, 150, 255, 218)
             ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
+        child: const Icon(
+          FluentIcons.add_32_regular,
+          size: 25,
+          color: Colors.white,
+        ),
       ),
     );
   }
