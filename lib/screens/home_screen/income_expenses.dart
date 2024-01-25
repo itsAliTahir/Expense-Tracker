@@ -20,13 +20,13 @@ class MyIncomeExpenses extends StatelessWidget {
         GradientBox(
             amount: TotalIncome(),
             title: "Income",
-            gradient1: Color.fromARGB(255, 156, 128, 241),
-            gradient2: Color.fromARGB(255, 169, 185, 250)),
+            gradient1: const Color.fromARGB(255, 156, 128, 241),
+            gradient2: const Color.fromARGB(255, 169, 185, 250)),
         GradientBox(
           amount: TotalExpense(),
           title: "Expense",
-          gradient1: Color.fromARGB(255, 255, 85, 119),
-          gradient2: Color.fromARGB(255, 251, 146, 131),
+          gradient1: const Color.fromARGB(255, 255, 85, 119),
+          gradient2: const Color.fromARGB(255, 251, 146, 131),
         ),
       ],
     );

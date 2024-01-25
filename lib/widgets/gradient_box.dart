@@ -21,12 +21,12 @@ class GradientBox extends StatelessWidget {
       height: 70,
       padding: const EdgeInsets.only(top: 10, left: 10, right: 3, bottom: 3),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(7),
+          borderRadius: BorderRadius.circular(3),
           boxShadow: const [
             BoxShadow(
               color: Colors.grey,
-              offset: Offset(0, 2), // Set shadow offset
-              blurRadius: 2, // Set blur radius for a shadow effect
+              offset: Offset(0, 2),
+              blurRadius: 2,
             ),
           ],
           gradient: LinearGradient(

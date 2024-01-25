@@ -8,6 +8,7 @@ class TransactionDataProvider with ChangeNotifier {
     Transaction("3", "My Transaction", "My Description", -1000, "not made yet"),
     Transaction("4", "My Transaction", "My Description", 200, "not made yet"),
     Transaction("5", "My Transaction", "My Description", -500, "not made yet"),
+    Transaction("6", "My Transaction", "My Description", 600, "not made yet"),
   ];
 
   List<Transaction> get allitems {
