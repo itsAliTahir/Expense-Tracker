@@ -10,7 +10,7 @@ class TransactionDataProvider with ChangeNotifier {
     Transaction("5", "My Transaction", "My Description", -500, "not made yet"),
   ];
 
-  List<Transaction> get items {
+  List<Transaction> get allitems {
     return [..._myExpensesList];
   }
 
