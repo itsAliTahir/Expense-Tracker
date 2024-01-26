@@ -1,8 +1,9 @@
+import 'package:delayed_display/delayed_display.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
 class MySelectType extends StatefulWidget {
-  MySelectType({super.key});
+  const MySelectType({super.key});
 
   @override
   State<MySelectType> createState() => _MySelectTypeState();
@@ -17,14 +18,16 @@ class _MySelectTypeState extends State<MySelectType> {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return AnimatedContainer(
-      duration: Duration(milliseconds: 200),
+      duration: const Duration(milliseconds: 200),
       height: show ? 95 : 40,
       margin: EdgeInsets.symmetric(vertical: screenHeight * 0.03),
       child: Stack(
         children: [
           Padding(
             padding: EdgeInsets.only(
-                left: screenWidth * 0.08, right: screenWidth * 0.03),
+              left: screenWidth * 0.08,
+              right: screenWidth * 0.03,
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -44,47 +47,53 @@ class _MySelectTypeState extends State<MySelectType> {
                       show = !show;
                     });
                   },
-                  // icon: Icon(Icons.close),
-                  icon: Icon(FluentIcons.filter_12_regular),
-                  style: ButtonStyle(iconSize: MaterialStatePropertyAll(20)),
-                )
+                  icon:
+                      Icon(show ? Icons.close : FluentIcons.filter_12_regular),
+                  style:
+                      const ButtonStyle(iconSize: MaterialStatePropertyAll(20)),
+                ),
               ],
             ),
           ),
-          show
-              ? Positioned(
-                  bottom: 0,
-                  child: Container(
-                    margin: EdgeInsets.all(0),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            width: 20,
+          if (show)
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    const SizedBox(width: 20),
+                    for (int i = 0; i < 10; i++)
+                      DelayedDisplay(
+                        slidingBeginOffset: Offset((i + 1) * 1, 0),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 10),
+                          margin: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 5),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          for (int i = 0; i < 10; i++)
-                            Container(
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 5, horizontal: 10),
-                                margin: EdgeInsets.symmetric(
-                                    vertical: 10, horizontal: 5),
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey),
-                                    borderRadius: BorderRadius.circular(12)),
-                                child: Text(
-                                  "data",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: 1,
-                                      fontFamily: "Raleway"),
-                                ))
-                        ],
+                          child: const Text(
+                            "data",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 1,
+                              fontFamily: "Raleway",
+                            ),
+                          ),
+                        ),
                       ),
+                    const SizedBox(
+                      width: 20,
                     ),
-                  ),
-                )
-              : SizedBox(),
+                  ],
+                ),
+              ),
+            ),
         ],
       ),
     );

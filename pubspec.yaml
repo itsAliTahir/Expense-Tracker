@@ -39,6 +39,7 @@ dependencies:
   provider: ^6.1.1
   fluentui_system_icons: ^1.1.224
   gradient_floating_button: ^0.0.3
+  delayed_display: ^2.0.0
 
 dev_dependencies:
   flutter_test:
