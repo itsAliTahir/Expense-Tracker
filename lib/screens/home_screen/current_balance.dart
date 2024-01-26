@@ -22,31 +22,34 @@ class _MyCurrentBalanceState extends State<MyCurrentBalance> {
       child: Container(
         margin:
             EdgeInsets.symmetric(horizontal: 15, vertical: screenHeight * 0.04),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            AnimatedFlipCounter(
-              value: CurrentBalance(),
-              prefix: "\$",
-              textStyle: const TextStyle(
-                  fontFamily: "Raleway",
-                  fontSize: 34,
-                  fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-              height: 3,
-            ),
-            Text(
-              "Current Balance",
-              style: TextStyle(
-                  fontFamily: "Raleway",
-                  letterSpacing: 1,
-                  color: Theme.of(context).secondaryHeaderColor,
-                  fontSize: 13,
-                  fontWeight: FontWeight.bold),
-            ),
-          ],
+        child: FittedBox(
+          fit: BoxFit.contain,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              AnimatedFlipCounter(
+                value: CurrentBalance(),
+                prefix: "\$",
+                textStyle: const TextStyle(
+                    fontFamily: "Raleway",
+                    fontSize: 34,
+                    fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 3,
+              ),
+              Text(
+                "Current Balance",
+                style: TextStyle(
+                    fontFamily: "Raleway",
+                    letterSpacing: 1,
+                    color: Theme.of(context).secondaryHeaderColor,
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
         ),
       ),
     );

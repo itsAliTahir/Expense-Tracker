@@ -23,36 +23,41 @@ class _MySelectTypeState extends State<MySelectType> {
       margin: EdgeInsets.symmetric(vertical: screenHeight * 0.03),
       child: Stack(
         children: [
-          Padding(
-            padding: EdgeInsets.only(
-              left: screenWidth * 0.08,
-              right: screenWidth * 0.03,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Transactions",
-                  style: TextStyle(
-                    fontFamily: "Raleway",
-                    fontWeight: FontWeight.bold,
-                    fontSize: 13,
-                    letterSpacing: 1.5,
-                    color: Theme.of(context).secondaryHeaderColor,
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: screenWidth * 0.08,
+                right: screenWidth * 0.03,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Transactions",
+                    style: TextStyle(
+                      fontFamily: "Raleway",
+                      fontWeight: FontWeight.bold,
+                      fontSize: 13,
+                      letterSpacing: 1.5,
+                      color: Theme.of(context).secondaryHeaderColor,
+                    ),
                   ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    setState(() {
-                      show = !show;
-                    });
-                  },
-                  icon:
-                      Icon(show ? Icons.close : FluentIcons.filter_12_regular),
-                  style:
-                      const ButtonStyle(iconSize: MaterialStatePropertyAll(20)),
-                ),
-              ],
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        show = !show;
+                      });
+                    },
+                    icon: Icon(
+                        show ? Icons.close : FluentIcons.filter_12_regular),
+                    style: const ButtonStyle(
+                        iconSize: MaterialStatePropertyAll(20)),
+                  ),
+                ],
+              ),
             ),
           ),
           if (show)
