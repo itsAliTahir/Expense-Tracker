@@ -1,3 +1,4 @@
+import 'package:cash_book_expense_tracker/provider/category_data_provider.dart';
 import 'package:cash_book_expense_tracker/provider/transaction_data_provider.dart';
 import 'package:cash_book_expense_tracker/screens/home_screen/home_screen_body.dart';
 import 'package:provider/provider.dart';
@@ -13,8 +14,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => TransactionDataProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => TransactionDataProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CategoryDataProvider(),
+        )
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(

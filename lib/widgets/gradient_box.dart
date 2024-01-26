@@ -16,11 +16,16 @@ class GradientBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    return Container(
-      width: screenWidth * 0.4,
-      height: 70,
-      padding: const EdgeInsets.only(top: 10, left: 10, right: 3, bottom: 3),
-      decoration: BoxDecoration(
+    return InkWell(
+      onTap: () {
+        // Add your onTap functionality here
+        // For example, you can navigate to another screen or perform some action
+      },
+      child: Container(
+        width: screenWidth * 0.4,
+        height: 70,
+        padding: const EdgeInsets.only(top: 10, left: 10, right: 3, bottom: 3),
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(3),
           boxShadow: const [
             BoxShadow(
@@ -30,35 +35,40 @@ class GradientBox extends StatelessWidget {
             ),
           ],
           gradient: LinearGradient(
-              colors: [gradient1, gradient2],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight)),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          FittedBox(
-            fit: BoxFit.contain,
-            child: AnimatedFlipCounter(
-              value: amount,
-              prefix: "\$",
-              textStyle: const TextStyle(
+            colors: [gradient1, gradient2],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            FittedBox(
+              fit: BoxFit.contain,
+              child: AnimatedFlipCounter(
+                value: amount,
+                prefix: "\$",
+                textStyle: const TextStyle(
                   fontFamily: "Raleway",
                   color: Colors.white,
                   fontSize: 18,
-                  fontWeight: FontWeight.bold),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
-          ),
-          Text(
-            title,
-            style: const TextStyle(
+            Text(
+              title,
+              style: const TextStyle(
                 fontFamily: "Raleway",
                 letterSpacing: 1,
                 color: Color.fromARGB(255, 224, 224, 224),
                 fontSize: 10,
-                fontWeight: FontWeight.bold),
-          ),
-        ],
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
