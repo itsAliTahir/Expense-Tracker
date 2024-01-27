@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'appbar.dart';
 import 'current_balance.dart';
 import 'floatingactionbutton.dart';
@@ -7,24 +8,35 @@ import 'select_filter.dart';
 import 'transactions_list.dart';
 
 class MyHomeScreenBody extends StatelessWidget {
-  const MyHomeScreenBody({super.key});
+  MyHomeScreenBody({super.key});
+  final _advancedDrawerController = AdvancedDrawerController();
+  void _handleMenuButtonPressed() {
+    _advancedDrawerController.showDrawer();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(56.0),
-        child: MyAppBar(),
-      ),
+    return AdvancedDrawer(
+      controller: _advancedDrawerController,
+      backdropColor: Colors.black,
       drawer: Drawer(),
-      body: Column(children: [
-        MyCurrentBalance(),
-        MyIncomeExpenses(),
-        MySelectType(),
-        MyTransactionsList(),
-      ]),
-      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
-      floatingActionButton: MyFloatingActionButton(),
+      child: Scaffold(
+        appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(56),
+            child: MyAppBar(
+              _handleMenuButtonPressed,
+            )),
+        body: const Column(children: [
+          MyCurrentBalance(),
+          MyIncomeExpenses(),
+          MySelectType(),
+          MyTransactionsList(),
+        ]),
+        floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+        floatingActionButton: const MyFloatingActionButton(),
+      ),
     );
   }
 }
+
+// https://pub.dev/packages/flutter_advanced_drawer/example

@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         //     secondaryHeaderColor: darkThemeSecondaryFont,
         //     scaffoldBackgroundColor: darkThemeScaffold),
         themeMode: ThemeMode.light,
-        home: const MyHomeScreenBody(),
+        home: MyHomeScreenBody(),
       ),
     );
   }

@@ -1,25 +1,22 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
-class MyAppBar extends StatefulWidget {
-  const MyAppBar({super.key});
+class MyAppBar extends StatelessWidget {
+  var openDrawer;
+  MyAppBar(this.openDrawer, {super.key});
 
-  @override
-  State<MyAppBar> createState() => _MyAppBarState();
-}
-
-class _MyAppBarState extends State<MyAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
       scrolledUnderElevation: 0,
       leading: IconButton(
-        icon: Icon(
+        icon: const Icon(
           FluentIcons.re_order_dots_horizontal_24_regular,
           size: 28,
         ),
         onPressed: () {
-          Scaffold.of(context).openDrawer();
+          // Scaffold.of(context).openDrawer();
+          openDrawer();
         },
       ),
       title: const Text(
