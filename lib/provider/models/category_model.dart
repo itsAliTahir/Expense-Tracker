@@ -1,4 +1,6 @@
-enum Categories {
+import 'package:flutter/material.dart';
+
+enum AvailableCategories {
   Miscellaneous,
   Housing,
   Transportation,
@@ -11,4 +13,11 @@ enum Categories {
   Savings,
   Loan,
   Taxes,
+}
+
+class Categories {
+  int id;
+  String name;
+  IconData icon;
+  Categories(this.id, this.name, this.icon);
 }

@@ -4,12 +4,30 @@ import 'models/transaction_model.dart';
 
 class TransactionDataProvider with ChangeNotifier {
   final List<Transaction> _myExpensesList = [
-    Transaction("1", "My Transaction", "My Description", 1200, "not made yet"),
-    Transaction("2", "My Transaction", "My Description", 800, "not made yet"),
-    Transaction("3", "My Transaction", "My Description", -1000, "not made yet"),
-    Transaction("4", "My Transaction", "My Description", 200, "not made yet"),
-    Transaction("5", "My Transaction", "My Description", -500, "not made yet"),
-    Transaction("6", "My Transaction", "My Description", 600, "not made yet"),
+    Transaction("0", 0, "My Transaction My Transaction My Transaction",
+        "My Description", 1200, "not made yet"),
+    Transaction(
+        "1", 1, "My Transaction", "My Description", 800, "not made yet"),
+    Transaction(
+        "2", 2, "My Transaction", "My Description", -1000, "not made yet"),
+    Transaction(
+        "3", 3, "My Transaction", "My Description", 200, "not made yet"),
+    Transaction(
+        "4", 4, "My Transaction", "My Description", -500, "not made yet"),
+    Transaction(
+        "5", 5, "My Transaction", "My Description", 600, "not made yet"),
+    Transaction(
+        "6", 6, "My Transaction", "My Description", 600, "not made yet"),
+    Transaction(
+        "7", 7, "My Transaction", "My Description", 600, "not made yet"),
+    Transaction(
+        "8", 8, "My Transaction", "My Description", 600, "not made yet"),
+    Transaction(
+        "9", 9, "My Transaction", "My Description", 600, "not made yet"),
+    Transaction(
+        "10", 10, "My Transaction", "My Description", 600, "not made yet"),
+    Transaction(
+        "11", 11, "My Transaction", "My Description", 600, "not made yet"),
   ];
 
   List<Transaction> get allitems {
