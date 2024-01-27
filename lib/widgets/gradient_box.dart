@@ -17,11 +17,9 @@ class GradientBox extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return InkWell(
-      onTap: () {
-        // Add your onTap functionality here
-        // For example, you can navigate to another screen or perform some action
-      },
-      child: Container(
+      splashColor: gradient2,
+      onTap: () {},
+      child: Ink(
         width: screenWidth * 0.4,
         height: 70,
         padding: const EdgeInsets.only(top: 10, left: 10, right: 3, bottom: 3),

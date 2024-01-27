@@ -1,6 +1,6 @@
+import 'package:cash_book_expense_tracker/provider/themes_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../provider/transaction_data_provider.dart';
 import '../../widgets/gradient_box.dart';
 
@@ -21,13 +21,13 @@ class MyIncomeExpenses extends StatelessWidget {
         GradientBox(
             amount: TotalIncome(),
             title: "Income",
-            gradient1: const Color.fromARGB(255, 156, 128, 241),
-            gradient2: const Color.fromARGB(255, 169, 185, 250)),
+            gradient1: incomeDark,
+            gradient2: incomeLight),
         GradientBox(
           amount: TotalExpense(),
           title: "Expense",
-          gradient1: const Color.fromARGB(255, 255, 85, 119),
-          gradient2: const Color.fromARGB(255, 251, 146, 131),
+          gradient1: expenseDark,
+          gradient2: expenseLight,
         ),
       ],
     );

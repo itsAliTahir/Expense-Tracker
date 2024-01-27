@@ -1,4 +1,5 @@
 import 'package:cash_book_expense_tracker/provider/category_data_provider.dart';
+import 'package:cash_book_expense_tracker/provider/themes_data.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +30,7 @@ class MyTransactionsList extends StatelessWidget {
                   children: [
                     Text(
                       itemsList[index].title,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontFamily: "Raleway",
                           letterSpacing: 1,
                           fontSize: 13,
@@ -52,8 +53,8 @@ class MyTransactionsList extends StatelessWidget {
                       fontFamily: "Raleway",
                       fontWeight: FontWeight.bold,
                       color: itemsList[index].amount >= 0
-                          ? const Color.fromARGB(255, 156, 128, 241)
-                          : const Color.fromARGB(255, 255, 85, 119)),
+                          ? incomeDark
+                          : expenseDark),
                 ),
               ),
             ),

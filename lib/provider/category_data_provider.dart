@@ -13,7 +13,7 @@ class CategoryDataProvider with ChangeNotifier {
     Categories(3, AvailableCategories.Food.toString().split('.').last,
         FluentIcons.food_pizza_24_filled),
     Categories(4, AvailableCategories.Health.toString().split('.').last,
-        FluentIcons.stethoscope_20_regular),
+        FluentIcons.stethoscope_24_filled),
     Categories(5, AvailableCategories.Entertainment.toString().split('.').last,
         FluentIcons.games_24_filled),
     Categories(6, AvailableCategories.Utilities.toString().split('.').last,
@@ -25,7 +25,7 @@ class CategoryDataProvider with ChangeNotifier {
     Categories(9, AvailableCategories.Savings.toString().split('.').last,
         Icons.savings_sharp),
     Categories(10, AvailableCategories.Loan.toString().split('.').last,
-        FluentIcons.money_hand_20_regular),
+        FluentIcons.money_hand_24_filled),
     Categories(11, AvailableCategories.Taxes.toString().split('.').last,
         Icons.money_off_csred),
   ];

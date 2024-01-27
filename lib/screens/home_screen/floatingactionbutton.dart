@@ -1,3 +1,4 @@
+import 'package:cash_book_expense_tracker/provider/themes_data.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -25,9 +26,9 @@ class MyFloatingActionButton extends StatelessWidget {
         height: double.infinity,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            gradient: const LinearGradient(colors: [
-              Color.fromARGB(255, 79, 220, 154),
-              Color.fromARGB(255, 150, 255, 218)
+            gradient: LinearGradient(colors: [
+              selectDark,
+              selectLight,
             ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
         child: const Icon(
           FluentIcons.add_32_regular,
