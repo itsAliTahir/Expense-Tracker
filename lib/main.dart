@@ -1,9 +1,10 @@
-import 'package:cash_book_expense_tracker/provider/category_data_provider.dart';
-import 'package:cash_book_expense_tracker/provider/transaction_data_provider.dart';
-import 'package:cash_book_expense_tracker/screens/home_screen/home_screen_body.dart';
 import 'package:provider/provider.dart';
+import 'provider/category_data_provider.dart';
 import 'provider/themes_data.dart';
 import 'package:flutter/material.dart';
+
+import 'provider/transaction_data_provider.dart';
+import 'screens/home_screen/home_screen_body.dart';
 
 void main() {
   runApp(const MyApp());

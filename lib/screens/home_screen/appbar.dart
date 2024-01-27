@@ -12,6 +12,7 @@ class _MyAppBarState extends State<MyAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      scrolledUnderElevation: 0,
       leading: IconButton(
         icon: Icon(
           FluentIcons.re_order_dots_horizontal_24_regular,

@@ -1,5 +1,6 @@
-import 'package:cash_book_expense_tracker/provider/models/transaction_model.dart';
 import 'package:flutter/material.dart';
+
+import 'models/transaction_model.dart';
 
 class TransactionDataProvider with ChangeNotifier {
   final List<Transaction> _myExpensesList = [

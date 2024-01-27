@@ -19,7 +19,7 @@ class _MySelectTypeState extends State<MySelectType> {
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
-      height: show ? 95 : 40,
+      height: show ? 95 : 50,
       margin: EdgeInsets.symmetric(vertical: screenHeight * 0.03),
       child: Stack(
         children: [
@@ -72,6 +72,7 @@ class _MySelectTypeState extends State<MySelectType> {
                     const SizedBox(width: 20),
                     for (int i = 0; i < 10; i++)
                       DelayedDisplay(
+                        delay: const Duration(milliseconds: 200),
                         slidingBeginOffset: Offset((i + 1) * 1, 0),
                         child: Container(
                           padding: const EdgeInsets.symmetric(

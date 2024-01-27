@@ -1,16 +1,17 @@
-import 'package:cash_book_expense_tracker/screens/home_screen/appbar.dart';
-import 'package:cash_book_expense_tracker/screens/home_screen/current_balance.dart';
-import 'package:cash_book_expense_tracker/screens/home_screen/floatingactionbutton.dart';
-import 'package:cash_book_expense_tracker/screens/home_screen/income_expenses.dart';
-import 'package:cash_book_expense_tracker/screens/home_screen/select_filter.dart';
 import 'package:flutter/material.dart';
+import 'appbar.dart';
+import 'current_balance.dart';
+import 'floatingactionbutton.dart';
+import 'income_expenses.dart';
+import 'select_filter.dart';
+import 'transactions_list.dart';
 
 class MyHomeScreenBody extends StatelessWidget {
   const MyHomeScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(56.0),
         child: MyAppBar(),
@@ -20,6 +21,7 @@ class MyHomeScreenBody extends StatelessWidget {
         MyCurrentBalance(),
         MyIncomeExpenses(),
         MySelectType(),
+        MyTransactionsList(),
       ]),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       floatingActionButton: MyFloatingActionButton(),
