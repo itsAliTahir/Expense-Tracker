@@ -1,4 +1,5 @@
 import 'package:cash_book_expense_tracker/provider/themes_data.dart';
+import 'package:cash_book_expense_tracker/screens/income_expense_detail_screen/income_expense_detail_screen_body.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../provider/transaction_data_provider.dart';
@@ -23,13 +24,29 @@ class MyIncomeExpenses extends StatelessWidget {
             title: "Income",
             gradient1: incomeDark,
             gradient2: incomeLight,
-            openDetail: () {}),
+            openDetail: () {
+              Navigator.pushNamed(context, '/incomeexpensedetailscreenbody',
+                  arguments: GradientBox(
+                      amount: TotalIncome(),
+                      title: "Income",
+                      gradient1: incomeDark,
+                      gradient2: incomeLight,
+                      openDetail: () {}));
+            }),
         GradientBox(
           amount: TotalExpense(),
           title: "Expense",
           gradient1: expenseDark,
           gradient2: expenseLight,
-          openDetail: () {},
+          openDetail: () {
+            Navigator.pushNamed(context, '/incomeexpensedetailscreenbody',
+                arguments: GradientBox(
+                    amount: TotalExpense(),
+                    title: "Expense",
+                    gradient1: expenseDark,
+                    gradient2: expenseLight,
+                    openDetail: () {}));
+          },
         ),
       ],
     );

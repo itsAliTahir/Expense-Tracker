@@ -107,14 +107,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  gradient_floating_button:
-    dependency: "direct main"
-    description:
-      name: gradient_floating_button
-      sha256: "5e718383f153c875a5d9c14620a0d38ad669d6b5511c7faddd9aa19755fa8bcb"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.3"
   lints:
     dependency: transitive
     description:

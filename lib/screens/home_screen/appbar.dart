@@ -7,15 +7,18 @@ class MyAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final routeName = ModalRoute.of(context)!.settings.name;
+    ;
     return AppBar(
       scrolledUnderElevation: 0,
       leading: IconButton(
-        icon: const Icon(
-          FluentIcons.re_order_dots_horizontal_24_regular,
-          size: 28,
+        icon: Icon(
+          routeName == '/incomeexpensedetailscreenbody'
+              ? Icons.arrow_back_ios_new
+              : FluentIcons.re_order_dots_horizontal_24_regular,
+          size: routeName == '/incomeexpensedetailscreenbody' ? 22 : 28,
         ),
         onPressed: () {
-          // Scaffold.of(context).openDrawer();
           openDrawer();
         },
       ),

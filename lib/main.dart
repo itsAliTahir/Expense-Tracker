@@ -1,3 +1,4 @@
+import 'package:cash_book_expense_tracker/screens/income_expense_detail_screen/income_expense_detail_screen_body.dart';
 import 'package:provider/provider.dart';
 import 'provider/category_data_provider.dart';
 import 'provider/themes_data.dart';
@@ -27,8 +28,12 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-            textTheme:
-                const TextTheme(titleLarge: TextStyle(color: Colors.black)),
+            textTheme: const TextTheme(
+              titleLarge: TextStyle(
+                color: Colors.black,
+                decoration: TextDecoration.none,
+              ),
+            ),
             appBarTheme: AppBarTheme(color: lightThemeScaffold),
             drawerTheme: DrawerThemeData(
                 backgroundColor: lightThemeDrawerBackgroundColor),
@@ -41,7 +46,13 @@ class MyApp extends StatelessWidget {
         //     secondaryHeaderColor: darkThemeSecondaryFont,
         //     scaffoldBackgroundColor: darkThemeScaffold),
         themeMode: ThemeMode.light,
-        home: MyHomeScreenBody(),
+        // home: MyHomeScreenBody(),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => MyHomeScreenBody(),
+          '/incomeexpensedetailscreenbody': (context) =>
+              const MyIncomeExpenseDetailScreenBody()
+        },
       ),
     );
   }

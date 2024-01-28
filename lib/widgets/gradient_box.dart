@@ -18,56 +18,62 @@ class GradientBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    return InkWell(
-      splashColor: gradient2,
-      onTap: openDetail,
-      child: Ink(
-        width: screenWidth * 0.4,
-        height: 70,
-        padding: const EdgeInsets.only(top: 10, left: 10, right: 3, bottom: 3),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(3),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.grey,
-              offset: Offset(0, 2),
-              blurRadius: 2,
+    return Hero(
+      tag: title,
+      child: GestureDetector(
+        // splashColor: gradient2,
+        onTap: openDetail,
+        child: Container(
+          width: screenWidth * 0.4,
+          height: 70,
+          padding:
+              const EdgeInsets.only(top: 10, left: 10, right: 3, bottom: 3),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(3),
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.grey,
+                offset: Offset(0, 2),
+                blurRadius: 2,
+              ),
+            ],
+            gradient: LinearGradient(
+              colors: [gradient1, gradient2],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
-          ],
-          gradient: LinearGradient(
-            colors: [gradient1, gradient2],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
           ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            FittedBox(
-              fit: BoxFit.contain,
-              child: AnimatedFlipCounter(
-                value: amount,
-                prefix: "\$",
-                textStyle: const TextStyle(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              FittedBox(
+                fit: BoxFit.contain,
+                child: AnimatedFlipCounter(
+                  value: amount,
+                  prefix: "\$",
+                  textStyle: const TextStyle(
+                    decoration: TextDecoration.none,
+                    fontFamily: "Raleway",
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Text(
+                title,
+                style: const TextStyle(
+                  decoration: TextDecoration.none,
                   fontFamily: "Raleway",
-                  color: Colors.white,
-                  fontSize: 18,
+                  letterSpacing: 1,
+                  color: Color.fromARGB(255, 224, 224, 224),
+                  fontSize: 10,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
-            Text(
-              title,
-              style: const TextStyle(
-                fontFamily: "Raleway",
-                letterSpacing: 1,
-                color: Color.fromARGB(255, 224, 224, 224),
-                fontSize: 10,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
