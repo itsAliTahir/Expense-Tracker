@@ -25,9 +25,7 @@ class MyHomeScreenBody extends StatelessWidget {
       child: Scaffold(
         appBar: PreferredSize(
             preferredSize: const Size.fromHeight(56),
-            child: MyAppBar(
-              _handleMenuButtonPressed,
-            )),
+            child: MyAppBar(_handleMenuButtonPressed, "CASH BOOK")),
         body: const Column(children: [
           MyCurrentBalance(),
           MyIncomeExpenses(),

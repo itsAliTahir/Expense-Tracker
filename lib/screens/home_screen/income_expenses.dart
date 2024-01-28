@@ -26,12 +26,15 @@ class MyIncomeExpenses extends StatelessWidget {
             gradient2: incomeLight,
             openDetail: () {
               Navigator.pushNamed(context, '/incomeexpensedetailscreenbody',
-                  arguments: GradientBox(
-                      amount: TotalIncome(),
-                      title: "Income",
-                      gradient1: incomeDark,
-                      gradient2: incomeLight,
-                      openDetail: () {}));
+                  arguments: [
+                    GradientBox(
+                        amount: TotalIncome(),
+                        title: "Income",
+                        gradient1: incomeDark,
+                        gradient2: incomeLight,
+                        openDetail: () {}),
+                    "Income"
+                  ]);
             }),
         GradientBox(
           amount: TotalExpense(),
@@ -40,12 +43,15 @@ class MyIncomeExpenses extends StatelessWidget {
           gradient2: expenseLight,
           openDetail: () {
             Navigator.pushNamed(context, '/incomeexpensedetailscreenbody',
-                arguments: GradientBox(
-                    amount: TotalExpense(),
-                    title: "Expense",
-                    gradient1: expenseDark,
-                    gradient2: expenseLight,
-                    openDetail: () {}));
+                arguments: [
+                  GradientBox(
+                      amount: TotalExpense(),
+                      title: "Expense",
+                      gradient1: expenseDark,
+                      gradient2: expenseLight,
+                      openDetail: () {}),
+                  "Expense"
+                ]);
           },
         ),
       ],

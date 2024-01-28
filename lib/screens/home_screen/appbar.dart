@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 class MyAppBar extends StatelessWidget {
   var openDrawer;
-  MyAppBar(this.openDrawer, {super.key});
+  String title;
+  MyAppBar(this.openDrawer, this.title, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +23,9 @@ class MyAppBar extends StatelessWidget {
           openDrawer();
         },
       ),
-      title: const Text(
-        "CASH BOOK",
-        style: TextStyle(
+      title: Text(
+        title,
+        style: const TextStyle(
           fontFamily: "Raleway",
           fontWeight: FontWeight.bold,
           fontSize: 15,

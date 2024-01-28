@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'provider/category_data_provider.dart';
 import 'provider/themes_data.dart';
 import 'package:flutter/material.dart';
-
 import 'provider/transaction_data_provider.dart';
 import 'screens/home_screen/home_screen_body.dart';
 
@@ -47,6 +46,7 @@ class MyApp extends StatelessWidget {
         //     scaffoldBackgroundColor: darkThemeScaffold),
         themeMode: ThemeMode.light,
         // home: MyHomeScreenBody(),
+        // home: MyHomePage(),
         initialRoute: '/',
         routes: {
           '/': (context) => MyHomeScreenBody(),

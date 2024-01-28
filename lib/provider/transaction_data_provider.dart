@@ -21,9 +21,9 @@ class TransactionDataProvider with ChangeNotifier {
     Transaction(
         "7", 7, "My Transaction", "My Description", 600, "not made yet"),
     Transaction(
-        "8", 8, "My Transaction", "My Description", 600, "not made yet"),
+        "8", 8, "My Transaction", "My Description", -1600, "not made yet"),
     Transaction(
-        "9", 9, "My Transaction", "My Description", 600, "not made yet"),
+        "9", 9, "My Transaction", "My Description", -800, "not made yet"),
     Transaction(
         "10", 10, "My Transaction", "My Description", 600, "not made yet"),
     Transaction(
@@ -32,6 +32,14 @@ class TransactionDataProvider with ChangeNotifier {
 
   List<Transaction> get allitems {
     return [..._myExpensesList];
+  }
+
+  List<Transaction> get incomeList {
+    return [..._myExpensesList.where((element) => element.amount >= 0)];
+  }
+
+  List<Transaction> get expenseList {
+    return [..._myExpensesList.where((element) => element.amount < 0)];
   }
 
   num CurrentBalance() {
