@@ -6,11 +6,13 @@ class GradientBox extends StatelessWidget {
   String title;
   Color gradient1;
   Color gradient2;
+  void Function()? openDetail;
   GradientBox(
       {required this.amount,
       required this.title,
       required this.gradient1,
       required this.gradient2,
+      required this.openDetail,
       super.key});
 
   @override
@@ -18,7 +20,7 @@ class GradientBox extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     return InkWell(
       splashColor: gradient2,
-      onTap: () {},
+      onTap: openDetail,
       child: Ink(
         width: screenWidth * 0.4,
         height: 70,

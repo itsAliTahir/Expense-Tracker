@@ -19,6 +19,8 @@ class MyHomeScreenBody extends StatelessWidget {
     return AdvancedDrawer(
       controller: _advancedDrawerController,
       backdropColor: Colors.black,
+      disabledGestures: true,
+      openRatio: 0.75,
       drawer: Drawer(),
       child: Scaffold(
         appBar: PreferredSize(

@@ -22,12 +22,14 @@ class MyIncomeExpenses extends StatelessWidget {
             amount: TotalIncome(),
             title: "Income",
             gradient1: incomeDark,
-            gradient2: incomeLight),
+            gradient2: incomeLight,
+            openDetail: () {}),
         GradientBox(
           amount: TotalExpense(),
           title: "Expense",
           gradient1: expenseDark,
           gradient2: expenseLight,
+          openDetail: () {},
         ),
       ],
     );
