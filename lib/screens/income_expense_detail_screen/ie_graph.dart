@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:delayed_display/delayed_display.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +45,7 @@ class MyIncomeExpenseGraph extends StatelessWidget {
                     backgroundColor: Colors.transparent,
                     lineTouchData: const LineTouchData(
                         touchTooltipData: LineTouchTooltipData(
-                            tooltipBgColor: Color.fromARGB(255, 41, 41, 41))),
+                            tooltipBgColor: Color.fromARGB(255, 60, 60, 60))),
                     borderData: FlBorderData(border: const Border()),
                     titlesData: const FlTitlesData(
                       rightTitles: AxisTitles(drawBelowEverything: false),
@@ -107,7 +109,7 @@ class MyIncomeExpenseGraph extends StatelessWidget {
                           5,
                         ],
                         spots: [
-                          FlSpot(0, 0),
+                          const FlSpot(0, 0),
                           for (int i = 1; i <= sumList.length; i++)
                             FlSpot(i.toDouble(), sumList[i - 1].toDouble()),
                         ],

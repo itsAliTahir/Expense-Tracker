@@ -1,3 +1,6 @@
+// ignore_for_file: non_constant_identifier_names
+
+import 'package:cash_book_expense_tracker/provider/category_data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -46,6 +49,10 @@ class TransactionDataProvider with ChangeNotifier {
 
   List<Transaction> get expenseList {
     return [..._myExpensesList.where((element) => element.amount < 0)];
+  }
+
+  void ResetState() {
+    notifyListeners();
   }
 
   num CurrentBalance() {

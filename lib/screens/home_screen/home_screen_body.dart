@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
-import 'appbar.dart';
+import '../../widgets/appbar.dart';
 import 'current_balance.dart';
 import 'floatingactionbutton.dart';
 import 'income_expenses.dart';
@@ -21,7 +21,7 @@ class MyHomeScreenBody extends StatelessWidget {
       backdropColor: Colors.black,
       disabledGestures: true,
       openRatio: 0.75,
-      drawer: Drawer(),
+      drawer: const Drawer(),
       child: Scaffold(
         appBar: PreferredSize(
             preferredSize: const Size.fromHeight(56),

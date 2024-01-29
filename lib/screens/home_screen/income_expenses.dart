@@ -1,5 +1,6 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:cash_book_expense_tracker/provider/themes_data.dart';
-import 'package:cash_book_expense_tracker/screens/income_expense_detail_screen/income_expense_detail_screen_body.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../provider/transaction_data_provider.dart';

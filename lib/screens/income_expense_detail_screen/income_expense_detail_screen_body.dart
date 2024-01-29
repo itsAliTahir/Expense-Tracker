@@ -1,9 +1,10 @@
-import 'package:cash_book_expense_tracker/screens/home_screen/appbar.dart';
+// ignore_for_file: non_constant_identifier_names
+
+import 'package:cash_book_expense_tracker/widgets/appbar.dart';
 import 'package:cash_book_expense_tracker/screens/income_expense_detail_screen/ie_graph.dart';
-import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 
-import '../../widgets/title.dart';
+import '../../widgets/custom_title.dart';
 
 class MyIncomeExpenseDetailScreenBody extends StatefulWidget {
   const MyIncomeExpenseDetailScreenBody({super.key});

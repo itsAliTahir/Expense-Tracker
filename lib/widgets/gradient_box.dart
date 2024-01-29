@@ -1,6 +1,7 @@
 import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class GradientBox extends StatelessWidget {
   num amount;
   String title;
@@ -18,7 +19,6 @@ class GradientBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    final routeName = ModalRoute.of(context)!.settings.name;
     return Hero(
       tag: title,
       child: GestureDetector(
