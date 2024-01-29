@@ -18,6 +18,7 @@ class GradientBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    final routeName = ModalRoute.of(context)!.settings.name;
     return Hero(
       tag: title,
       child: GestureDetector(

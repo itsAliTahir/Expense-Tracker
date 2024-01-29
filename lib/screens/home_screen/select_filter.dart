@@ -1,3 +1,4 @@
+import 'package:cash_book_expense_tracker/widgets/title.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -35,16 +36,9 @@ class _MySelectTypeState extends State<MySelectType> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    "Transactions",
-                    style: TextStyle(
-                      fontFamily: "Raleway",
-                      fontWeight: FontWeight.bold,
-                      fontSize: 13,
-                      letterSpacing: 1.5,
-                      color: Theme.of(context).secondaryHeaderColor,
-                    ),
-                  ),
+                  screenWidth > 155
+                      ? CustomTitle(title: "Transactions")
+                      : const SizedBox(),
                   IconButton(
                     onPressed: () {
                       setState(() {

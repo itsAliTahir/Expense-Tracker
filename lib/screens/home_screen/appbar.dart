@@ -9,7 +9,7 @@ class MyAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final routeName = ModalRoute.of(context)!.settings.name;
-    ;
+
     return AppBar(
       scrolledUnderElevation: 0,
       leading: IconButton(

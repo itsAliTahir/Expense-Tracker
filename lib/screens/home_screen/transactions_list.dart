@@ -11,7 +11,7 @@ class MyTransactionsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final itemsList =
-        Provider.of<TransactionDataProvider>(context, listen: false).allitems;
+        Provider.of<TransactionDataProvider>(context, listen: false).fullList;
     final allCategories =
         Provider.of<CategoryDataProvider>(context, listen: false).allCategories;
     return Expanded(
@@ -39,7 +39,7 @@ class MyTransactionsList extends StatelessWidget {
                     Text(
                       itemsList[index].date,
                       style: TextStyle(
-                          fontFamily: "Raleway",
+                          // fontFamily: "Raleway",
                           color: Theme.of(context).secondaryHeaderColor,
                           fontSize: 11,
                           fontWeight: FontWeight.bold),
