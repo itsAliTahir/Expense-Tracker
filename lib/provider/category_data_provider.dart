@@ -4,6 +4,7 @@ import 'package:cash_book_expense_tracker/provider/transaction_data_provider.dar
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'models/category_model.dart';
+import 'models/transaction_model.dart';
 
 class CategoryDataProvider extends TransactionDataProvider {
   final List<Categories> _allCategories = [
@@ -33,8 +34,11 @@ class CategoryDataProvider extends TransactionDataProvider {
         Icons.money_off_csred),
   ];
   final List<int> _selectedCategoriesIndex = [];
+  List<Transaction> _itemsList = [];
 
   // Getters
+
+  List<Transaction> get itemsList => _itemsList;
 
   List<int> get allSelectedCategories {
     return [..._selectedCategoriesIndex];

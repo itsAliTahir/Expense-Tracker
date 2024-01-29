@@ -24,9 +24,6 @@ class _MySelectTypeState extends State<MySelectType> {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-    final ResetState =
-        Provider.of<TransactionDataProvider>(context, listen: false).ResetState;
-
     final allCategories =
         Provider.of<CategoryDataProvider>(context, listen: false).allCategories;
     final CategoriesToShow =
@@ -41,9 +38,6 @@ class _MySelectTypeState extends State<MySelectType> {
     final allSelectedCategories =
         Provider.of<CategoryDataProvider>(context, listen: false)
             .allSelectedCategories;
-
-    print(allSelectedCategories);
-    print(CategoriesToShow());
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
@@ -70,11 +64,10 @@ class _MySelectTypeState extends State<MySelectType> {
                     onPressed: () {
                       setState(() {
                         show = !show;
+                        if (show == false) {
+                          ResetCategories();
+                        }
                       });
-                      if (show == false) {
-                        ResetCategories();
-                      }
-                      ResetState();
                     },
                     icon: Icon(
                         show ? Icons.close : FluentIcons.filter_12_regular),
@@ -103,10 +96,14 @@ class _MySelectTypeState extends State<MySelectType> {
                           margin: const EdgeInsets.symmetric(
                               vertical: 10, horizontal: 5),
                           decoration: BoxDecoration(
+                            color: allSelectedCategories
+                                    .contains(CategoriesToShow()[i])
+                                ? selectLight2
+                                : Colors.white,
                             border: Border.all(
                                 width: allSelectedCategories
                                         .contains(CategoriesToShow()[i])
-                                    ? 2
+                                    ? 1
                                     : 1,
                                 color: allSelectedCategories
                                         .contains(CategoriesToShow()[i])
@@ -116,9 +113,10 @@ class _MySelectTypeState extends State<MySelectType> {
                           ),
                           child: InkWell(
                             onTap: () {
-                              Toggleselection(
-                                  allCategories[CategoriesToShow()[i]].id);
-                              setState(() {});
+                              setState(() {
+                                Toggleselection(
+                                    allCategories[CategoriesToShow()[i]].id);
+                              });
                             },
                             borderRadius: BorderRadius.circular(10),
                             child: Ink(

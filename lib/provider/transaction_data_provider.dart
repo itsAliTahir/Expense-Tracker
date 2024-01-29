@@ -51,10 +51,6 @@ class TransactionDataProvider with ChangeNotifier {
     return [..._myExpensesList.where((element) => element.amount < 0)];
   }
 
-  void ResetState() {
-    notifyListeners();
-  }
-
   num CurrentBalance() {
     num sum = 0;
     for (int i = 0; i < _myExpensesList.length; i++) {

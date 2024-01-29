@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
-import '../../widgets/appbar.dart';
+import 'appbar.dart';
 import 'current_balance.dart';
 import 'floatingactionbutton.dart';
 import 'income_expenses.dart';
 import 'select_filter.dart';
 import 'transactions_list.dart';
 
-class MyHomeScreenBody extends StatelessWidget {
-  MyHomeScreenBody({super.key});
+class MyHomeScreenBody extends StatefulWidget {
+  const MyHomeScreenBody({super.key});
+
+  @override
+  State<MyHomeScreenBody> createState() => _MyHomeScreenBodyState();
+}
+
+class _MyHomeScreenBodyState extends State<MyHomeScreenBody> {
   final _advancedDrawerController = AdvancedDrawerController();
+
   void _handleMenuButtonPressed() {
     _advancedDrawerController.showDrawer();
   }
