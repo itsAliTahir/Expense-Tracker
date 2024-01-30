@@ -6,8 +6,8 @@ import 'package:delayed_display/delayed_display.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:cash_book_expense_tracker/provider/category_data_provider.dart';
 
+import '../../provider/category_data_provider.dart';
 import '../../provider/transaction_data_provider.dart';
 
 class MySelectType extends StatefulWidget {

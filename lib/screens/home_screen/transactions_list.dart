@@ -1,5 +1,4 @@
 import 'package:cash_book_expense_tracker/provider/category_data_provider.dart';
-import 'package:cash_book_expense_tracker/provider/models/category_model.dart';
 import 'package:cash_book_expense_tracker/provider/models/transaction_model.dart';
 import 'package:cash_book_expense_tracker/provider/themes_data.dart';
 import 'package:delayed_display/delayed_display.dart';
@@ -12,24 +11,24 @@ class MyTransactionsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fullList =
-        Provider.of<TransactionDataProvider>(context, listen: false).fullList;
-
     final allCategories =
         Provider.of<CategoryDataProvider>(context, listen: false).allCategories;
     final allSelectedCategories =
         Provider.of<CategoryDataProvider>(context, listen: false)
             .allSelectedCategories;
 
-    List<Transaction> itemsList = fullList.where((item) {
-      return allSelectedCategories.isEmpty ||
-          allSelectedCategories.contains(item.iconId);
-    }).toList();
+    return Consumer<CategoryDataProvider>(
+      builder: (context, categoryData, child) {
+        final itemsList =
+            Provider.of<TransactionDataProvider>(context, listen: true)
+                .fullList
+                .where((element) =>
+                    categoryData.allSelectedCategories.isEmpty ||
+                    categoryData.allSelectedCategories.contains(element.iconId))
+                .toList();
 
-    return Expanded(
-      child: Consumer<CategoryDataProvider>(
-        builder: (context, value1, child) => Consumer<TransactionDataProvider>(
-          builder: (context, value2, child) => ListView.separated(
+        return Expanded(
+          child: ListView.separated(
             padding:
                 const EdgeInsets.only(top: 0, left: 0, right: 0, bottom: 60),
             itemCount: itemsList.length,
@@ -86,8 +85,8 @@ class MyTransactionsList extends StatelessWidget {
               );
             },
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
