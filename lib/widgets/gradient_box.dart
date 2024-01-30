@@ -1,6 +1,8 @@
 import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'package:flutter/material.dart';
 
+import '../provider/themes_data.dart';
+
 // ignore: must_be_immutable
 class GradientBox extends StatelessWidget {
   num amount;
@@ -55,7 +57,7 @@ class GradientBox extends StatelessWidget {
                   prefix: "\$",
                   textStyle: const TextStyle(
                     decoration: TextDecoration.none,
-                    fontFamily: "Raleway",
+                    fontFamily: font1,
                     color: Colors.white,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -66,7 +68,7 @@ class GradientBox extends StatelessWidget {
                 title,
                 style: const TextStyle(
                   decoration: TextDecoration.none,
-                  fontFamily: "Raleway",
+                  fontFamily: font1,
                   letterSpacing: 1,
                   color: Color.fromARGB(255, 224, 224, 224),
                   fontSize: 10,

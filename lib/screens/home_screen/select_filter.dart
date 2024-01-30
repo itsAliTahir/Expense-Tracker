@@ -131,7 +131,7 @@ class _MySelectTypeState extends State<MySelectType> {
                                       fontWeight: FontWeight.bold,
                                       letterSpacing: 1,
                                       fontSize: 11,
-                                      fontFamily: "Raleway",
+                                      fontFamily: font1,
                                     ),
                                   ),
                                 ),

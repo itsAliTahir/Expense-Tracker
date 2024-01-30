@@ -3,6 +3,8 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
+import '../provider/themes_data.dart';
+
 class MyAppBar extends StatelessWidget {
   var openDrawer;
   String title;
@@ -28,7 +30,7 @@ class MyAppBar extends StatelessWidget {
       title: Text(
         title,
         style: const TextStyle(
-          fontFamily: "Raleway",
+          fontFamily: font1,
           fontWeight: FontWeight.bold,
           fontSize: 15,
           letterSpacing: 7,

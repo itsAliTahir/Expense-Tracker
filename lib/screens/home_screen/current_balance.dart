@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:cash_book_expense_tracker/provider/themes_data.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'package:provider/provider.dart';
@@ -34,7 +35,7 @@ class _MyCurrentBalanceState extends State<MyCurrentBalance> {
                 value: CurrentBalance(),
                 prefix: "\$",
                 textStyle: const TextStyle(
-                    fontFamily: "Raleway",
+                    fontFamily: font1,
                     fontSize: 34,
                     fontWeight: FontWeight.bold),
               ),
@@ -44,7 +45,7 @@ class _MyCurrentBalanceState extends State<MyCurrentBalance> {
               Text(
                 "Current Balance",
                 style: TextStyle(
-                    fontFamily: "Raleway",
+                    fontFamily: font1,
                     letterSpacing: 1,
                     color: Theme.of(context).secondaryHeaderColor,
                     fontSize: 13,

@@ -4,7 +4,7 @@ import 'package:cash_book_expense_tracker/screens/income_expense_detail_screen/i
 import 'package:flutter/material.dart';
 
 import '../../widgets/custom_title.dart';
-import '../home_screen/appbar.dart';
+import '../../widgets/appbar.dart';
 
 class MyIncomeExpenseDetailScreenBody extends StatefulWidget {
   const MyIncomeExpenseDetailScreenBody({super.key});
