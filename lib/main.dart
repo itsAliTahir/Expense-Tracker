@@ -7,7 +7,7 @@ import 'provider/transaction_data_provider.dart';
 import 'screens/home_screen/home_screen_body.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
         // home: MyHomePage(),
         initialRoute: '/',
         routes: {
-          '/': (context) => MyHomeScreenBody(),
+          '/': (context) => const MyHomeScreenBody(),
           '/incomeexpensedetailscreenbody': (context) =>
               const MyIncomeExpenseDetailScreenBody()
         },
@@ -57,3 +57,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+// https://pub.dev/packages/flutter_bounceable/example
+// https://pub.dev/packages/bouncy_widget

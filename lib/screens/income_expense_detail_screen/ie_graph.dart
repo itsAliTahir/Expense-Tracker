@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_typing_uninitialized_variables
+// ignore_for_file: prefer_typing_uninitialized_variables, must_be_immutable
 
 import 'package:delayed_display/delayed_display.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -60,8 +60,9 @@ class MyIncomeExpenseGraph extends StatelessWidget {
                     ),
                     lineBarsData: [
                       LineChartBarData(
+                        isCurved: true,
                         belowBarData: BarAreaData(
-                          show: true,
+                          show: false,
                           gradient: LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
@@ -106,13 +107,15 @@ class MyIncomeExpenseGraph extends StatelessWidget {
                                 ? [incomeDark, incomeLight]
                                 : [expenseDark, expenseLight]),
                         dotData: FlDotData(
-                          // show: true,
-                          // getDotPainter: (spot, percent, barData, index) =>
-                          //     FlDotCirclePainter(
-                          //         radius: 3,
-                          //         color: Colors.transparent,
-                          //         strokeColor: expenseDark,
-                          //         strokeWidth: 1),
+                          show: true,
+                          getDotPainter: (spot, percent, barData, index) =>
+                              FlDotCirclePainter(
+                                  radius: 4,
+                                  color: args[1] == "Income"
+                                      ? expenseDark
+                                      : incomeDark,
+                                  strokeColor: Colors.white,
+                                  strokeWidth: 1.5),
                           checkToShowDot: (spot, barData) {
                             if (spot.x == 0 && spot.y == 0) {
                               return false;
@@ -121,12 +124,12 @@ class MyIncomeExpenseGraph extends StatelessWidget {
                             }
                           },
                         ),
-                        dashArray: [
-                          2,
-                          5,
-                          10,
-                          5,
-                        ],
+                        // dashArray: [
+                        //   2,
+                        //   5,
+                        //   10,
+                        //   5,
+                        // ],
                         spots: [
                           const FlSpot(0, 0),
                           for (int i = 1; i <= sumList.length; i++)

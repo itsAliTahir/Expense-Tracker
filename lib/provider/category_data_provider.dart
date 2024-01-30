@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:cash_book_expense_tracker/provider/transaction_data_provider.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +35,7 @@ class CategoryDataProvider extends TransactionDataProvider {
         Icons.money_off_csred),
   ];
   final List<int> _selectedCategoriesIndex = [];
-  List<Transaction> _itemsList = [];
+  final List<Transaction> _itemsList = [];
 
   // Getters
 
@@ -66,8 +68,7 @@ class CategoryDataProvider extends TransactionDataProvider {
       _selectedCategoriesIndex.add(index);
     }
     _selectedCategoriesIndex.sort();
-    print(index);
-    print(_selectedCategoriesIndex);
+
     notifyListeners();
     return;
   }

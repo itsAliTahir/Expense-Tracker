@@ -1,5 +1,4 @@
 import 'package:cash_book_expense_tracker/provider/category_data_provider.dart';
-import 'package:cash_book_expense_tracker/provider/models/transaction_model.dart';
 import 'package:cash_book_expense_tracker/provider/themes_data.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
@@ -13,9 +12,6 @@ class MyTransactionsList extends StatelessWidget {
   Widget build(BuildContext context) {
     final allCategories =
         Provider.of<CategoryDataProvider>(context, listen: false).allCategories;
-    final allSelectedCategories =
-        Provider.of<CategoryDataProvider>(context, listen: false)
-            .allSelectedCategories;
 
     return Consumer<CategoryDataProvider>(
       builder: (context, categoryData, child) {

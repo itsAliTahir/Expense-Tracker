@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import '../../widgets/appbar.dart';
 import 'current_balance.dart';
@@ -7,7 +9,7 @@ import 'select_filter.dart';
 import 'transactions_list.dart';
 
 class MyHomeScreenBody extends StatefulWidget {
-  MyHomeScreenBody({super.key});
+  const MyHomeScreenBody({super.key});
 
   @override
   State<MyHomeScreenBody> createState() => _MyHomeScreenBodyState();
@@ -26,7 +28,7 @@ class _MyHomeScreenBodyState extends State<MyHomeScreenBody> {
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(56),
           child: MyAppBar(OpenDrawer, "CASH BOOK")),
-      drawer: Drawer(),
+      drawer: const Drawer(),
       body: const Column(children: [
         MyCurrentBalance(),
         MyIncomeExpenses(),

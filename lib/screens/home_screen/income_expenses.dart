@@ -33,7 +33,7 @@ class MyIncomeExpenses extends StatelessWidget {
                         title: "Income",
                         gradient1: incomeDark,
                         gradient2: incomeLight,
-                        openDetail: () {}),
+                        openDetail: null),
                     "Income"
                   ]);
             }),
@@ -50,7 +50,7 @@ class MyIncomeExpenses extends StatelessWidget {
                       title: "Expense",
                       gradient1: expenseDark,
                       gradient2: expenseLight,
-                      openDetail: () {}),
+                      openDetail: null),
                   "Expense"
                 ]);
           },
