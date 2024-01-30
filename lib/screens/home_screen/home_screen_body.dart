@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'appbar.dart';
 import 'current_balance.dart';
 import 'floatingactionbutton.dart';
@@ -8,40 +7,34 @@ import 'select_filter.dart';
 import 'transactions_list.dart';
 
 class MyHomeScreenBody extends StatefulWidget {
-  const MyHomeScreenBody({super.key});
+  MyHomeScreenBody({super.key});
 
   @override
   State<MyHomeScreenBody> createState() => _MyHomeScreenBodyState();
 }
 
 class _MyHomeScreenBodyState extends State<MyHomeScreenBody> {
-  final _advancedDrawerController = AdvancedDrawerController();
-
-  void _handleMenuButtonPressed() {
-    _advancedDrawerController.showDrawer();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  void OpenDrawer() {
+    _scaffoldKey.currentState!.openDrawer();
   }
 
   @override
   Widget build(BuildContext context) {
-    return AdvancedDrawer(
-      controller: _advancedDrawerController,
-      backdropColor: Colors.black,
-      disabledGestures: true,
-      openRatio: 0.75,
-      drawer: const Drawer(),
-      child: Scaffold(
-        appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(56),
-            child: MyAppBar(_handleMenuButtonPressed, "CASH BOOK")),
-        body: const Column(children: [
-          MyCurrentBalance(),
-          MyIncomeExpenses(),
-          MySelectType(),
-          MyTransactionsList(),
-        ]),
-        floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
-        floatingActionButton: const MyFloatingActionButton(),
-      ),
+    return Scaffold(
+      key: _scaffoldKey,
+      appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(56),
+          child: MyAppBar(OpenDrawer, "CASH BOOK")),
+      drawer: Drawer(),
+      body: const Column(children: [
+        MyCurrentBalance(),
+        MyIncomeExpenses(),
+        MySelectType(),
+        MyTransactionsList(),
+      ]),
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+      floatingActionButton: const MyFloatingActionButton(),
     );
   }
 }

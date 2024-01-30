@@ -36,7 +36,7 @@ class MyIncomeExpenseGraph extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         child: Padding(
-          padding: const EdgeInsets.only(right: 10, top: 20),
+          padding: const EdgeInsets.only(right: 10, top: 20, left: 10),
           child: SizedBox(
             height: screenHeight * 0.2,
             child: Center(
@@ -45,10 +45,13 @@ class MyIncomeExpenseGraph extends StatelessWidget {
                     backgroundColor: Colors.transparent,
                     lineTouchData: const LineTouchData(
                         touchTooltipData: LineTouchTooltipData(
-                            tooltipBgColor: Color.fromARGB(255, 60, 60, 60))),
+                      tooltipBgColor: Colors.white,
+                      tooltipPadding: EdgeInsets.all(0),
+                    )),
                     borderData: FlBorderData(border: const Border()),
                     titlesData: const FlTitlesData(
                       rightTitles: AxisTitles(drawBelowEverything: false),
+                      leftTitles: AxisTitles(drawBelowEverything: false),
                       topTitles: AxisTitles(drawBelowEverything: false),
                     ),
                     gridData: FlGridData(
@@ -60,30 +63,41 @@ class MyIncomeExpenseGraph extends StatelessWidget {
                         belowBarData: BarAreaData(
                           show: true,
                           gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
                             colors: args[1] == "Income"
                                 ? [
                                     ColorTween(
-                                            begin: incomeLight,
-                                            end: incomeLight)
+                                            begin: incomeDark, end: incomeDark)
                                         .lerp(1)!
-                                        .withOpacity(0.2),
+                                        .withOpacity(0.4),
                                     ColorTween(
                                             begin: incomeLight,
                                             end: incomeLight)
                                         .lerp(1)!
-                                        .withOpacity(0.2),
+                                        .withOpacity(0.3),
+                                    ColorTween(
+                                            begin: Colors.white,
+                                            end: Colors.white)
+                                        .lerp(1)!
+                                        .withOpacity(0.0),
                                   ]
                                 : [
                                     ColorTween(
-                                            begin: expenseLight,
-                                            end: expenseLight)
+                                            begin: expenseDark,
+                                            end: expenseDark)
                                         .lerp(1)!
-                                        .withOpacity(0.2),
+                                        .withOpacity(0.4),
                                     ColorTween(
                                             begin: expenseLight,
                                             end: expenseLight)
                                         .lerp(1)!
-                                        .withOpacity(0.2),
+                                        .withOpacity(0.3),
+                                    ColorTween(
+                                            begin: Colors.white,
+                                            end: Colors.white)
+                                        .lerp(1)!
+                                        .withOpacity(0.0),
                                   ],
                           ),
                         ),
@@ -91,9 +105,14 @@ class MyIncomeExpenseGraph extends StatelessWidget {
                             colors: args[1] == "Income"
                                 ? [incomeDark, incomeLight]
                                 : [expenseDark, expenseLight]),
-                        // dashArray: [1, 2, 3, 4, 5],
-
                         dotData: FlDotData(
+                          // show: true,
+                          // getDotPainter: (spot, percent, barData, index) =>
+                          //     FlDotCirclePainter(
+                          //         radius: 3,
+                          //         color: Colors.transparent,
+                          //         strokeColor: expenseDark,
+                          //         strokeWidth: 1),
                           checkToShowDot: (spot, barData) {
                             if (spot.x == 0 && spot.y == 0) {
                               return false;

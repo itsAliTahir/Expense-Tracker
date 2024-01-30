@@ -7,7 +7,7 @@ import 'provider/transaction_data_provider.dart';
 import 'screens/home_screen/home_screen_body.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

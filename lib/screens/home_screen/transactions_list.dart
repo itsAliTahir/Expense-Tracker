@@ -49,15 +49,15 @@ class MyTransactionsList extends StatelessWidget {
                         Text(
                           itemsList[index].title,
                           style: const TextStyle(
-                              fontFamily: "Raleway",
+                              fontFamily: font2,
                               letterSpacing: 1,
-                              fontSize: 13,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold),
                         ),
                         Text(
                           itemsList[index].date,
                           style: TextStyle(
-                              // fontFamily: "Raleway",
+                              fontFamily: font2,
                               color: Theme.of(context).secondaryHeaderColor,
                               fontSize: 11,
                               fontWeight: FontWeight.bold),
@@ -68,7 +68,7 @@ class MyTransactionsList extends StatelessWidget {
                       "\$${itemsList[index].amount.toString()}",
                       style: TextStyle(
                           fontSize: 14,
-                          fontFamily: "Raleway",
+                          fontFamily: font1,
                           fontWeight: FontWeight.bold,
                           color: itemsList[index].amount >= 0
                               ? incomeDark
