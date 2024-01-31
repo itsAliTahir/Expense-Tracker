@@ -49,93 +49,121 @@ class MyIncomeExpenseGraph extends StatelessWidget {
                       tooltipPadding: EdgeInsets.all(0),
                     )),
                     borderData: FlBorderData(border: const Border()),
-                    titlesData: const FlTitlesData(
-                      rightTitles: AxisTitles(drawBelowEverything: false),
-                      leftTitles: AxisTitles(drawBelowEverything: false),
-                      topTitles: AxisTitles(drawBelowEverything: false),
+                    titlesData: FlTitlesData(
+                      rightTitles: const AxisTitles(drawBelowEverything: false),
+                      leftTitles: const AxisTitles(drawBelowEverything: false),
+                      topTitles: const AxisTitles(drawBelowEverything: false),
+                      bottomTitles: AxisTitles(
+                        sideTitles: SideTitles(
+                          showTitles: true,
+                          interval: 1,
+                          getTitlesWidget: (value, meta) => SideTitleWidget(
+                              axisSide: AxisSide.bottom,
+                              child: Text(
+                                (value.toInt().toString()),
+                                style: const TextStyle(
+                                  fontFamily: font1,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 13,
+                                  letterSpacing: 1.5,
+                                  color: Color.fromARGB(255, 179, 179, 179),
+                                ),
+                              )),
+                          reservedSize: 30,
+                        ),
+                      ),
                     ),
                     gridData: FlGridData(
                       checkToShowHorizontalLine: (value) => true,
                       checkToShowVerticalLine: (value) => false,
+                      getDrawingHorizontalLine: (value) => FlLine(
+                          color: Theme.of(context).secondaryHeaderColor,
+                          strokeWidth: 0.6,
+                          dashArray: [5, 3]),
                     ),
                     lineBarsData: [
                       LineChartBarData(
-                        isCurved: true,
-                        belowBarData: BarAreaData(
-                          show: false,
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: args[1] == "Income"
-                                ? [
-                                    ColorTween(
-                                            begin: incomeDark, end: incomeDark)
-                                        .lerp(1)!
-                                        .withOpacity(0.4),
-                                    ColorTween(
-                                            begin: incomeLight,
-                                            end: incomeLight)
-                                        .lerp(1)!
-                                        .withOpacity(0.3),
-                                    ColorTween(
-                                            begin: Colors.white,
-                                            end: Colors.white)
-                                        .lerp(1)!
-                                        .withOpacity(0.0),
-                                  ]
-                                : [
-                                    ColorTween(
-                                            begin: expenseDark,
-                                            end: expenseDark)
-                                        .lerp(1)!
-                                        .withOpacity(0.4),
-                                    ColorTween(
-                                            begin: expenseLight,
-                                            end: expenseLight)
-                                        .lerp(1)!
-                                        .withOpacity(0.3),
-                                    ColorTween(
-                                            begin: Colors.white,
-                                            end: Colors.white)
-                                        .lerp(1)!
-                                        .withOpacity(0.0),
-                                  ],
+                          isCurved: true,
+                          belowBarData: BarAreaData(
+                            show: false,
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: args[1] == "Income"
+                                  ? [
+                                      ColorTween(
+                                              begin: incomeDark,
+                                              end: incomeDark)
+                                          .lerp(1)!
+                                          .withOpacity(0.4),
+                                      ColorTween(
+                                              begin: incomeLight,
+                                              end: incomeLight)
+                                          .lerp(1)!
+                                          .withOpacity(0.3),
+                                      ColorTween(
+                                              begin: Colors.white,
+                                              end: Colors.white)
+                                          .lerp(1)!
+                                          .withOpacity(0.0),
+                                    ]
+                                  : [
+                                      ColorTween(
+                                              begin: expenseDark,
+                                              end: expenseDark)
+                                          .lerp(1)!
+                                          .withOpacity(0.4),
+                                      ColorTween(
+                                              begin: expenseLight,
+                                              end: expenseLight)
+                                          .lerp(1)!
+                                          .withOpacity(0.3),
+                                      ColorTween(
+                                              begin: Colors.white,
+                                              end: Colors.white)
+                                          .lerp(1)!
+                                          .withOpacity(0.0),
+                                    ],
+                            ),
                           ),
-                        ),
-                        gradient: LinearGradient(
+                          gradient: LinearGradient(
                             colors: args[1] == "Income"
-                                ? [incomeDark, incomeLight]
-                                : [expenseDark, expenseLight]),
-                        dotData: FlDotData(
-                          show: true,
-                          getDotPainter: (spot, percent, barData, index) =>
-                              FlDotCirclePainter(
-                                  radius: 4,
-                                  color: args[1] == "Income"
-                                      ? expenseDark
-                                      : incomeDark,
-                                  strokeColor: Colors.white,
-                                  strokeWidth: 1.5),
-                          checkToShowDot: (spot, barData) {
-                            if (spot.x == 0 && spot.y == 0) {
-                              return false;
-                            } else {
-                              return true;
-                            }
-                          },
-                        ),
-                        // dashArray: [
-                        //   2,
-                        //   5,
-                        //   10,
-                        //   5,
-                        // ],
-                        spots: [
-                          const FlSpot(0, 0),
-                          for (int i = 1; i <= sumList.length; i++)
-                            FlSpot(i.toDouble(), sumList[i - 1].toDouble()),
-                        ],
-                      ),
+                                ? [incomeDark2, incomeDark, incomeLight]
+                                : [expenseDark2, expenseDark, expenseLight],
+                          ),
+                          dotData: FlDotData(
+                            show: true,
+                            getDotPainter: (spot, percent, barData, index) =>
+                                FlDotCirclePainter(
+                                    radius: 4,
+                                    color: args[1] == "Income"
+                                        ? expenseDark
+                                        : incomeDark,
+                                    strokeColor: Colors.white,
+                                    strokeWidth: 1.5),
+                            checkToShowDot: (spot, barData) {
+                              if (spot.x == 0 && spot.y == 0 ||
+                                  spot.x == sumList.length) {
+                                return false;
+                              } else {
+                                return true;
+                              }
+                            },
+                          ),
+                          // dashArray: [
+                          //   2,
+                          //   5,
+                          //   10,
+                          //   5,
+                          // ],
+                          spots: [
+                            const FlSpot(0, 0),
+                            for (int i = 1; i <= sumList.length; i++)
+                              FlSpot(i.toDouble(), sumList[i - 1].toDouble()),
+                          ],
+                          shadow: const Shadow(
+                              offset: Offset(0, 3),
+                              color: Color.fromARGB(25, 0, 0, 0))),
                     ]),
               ),
             ),

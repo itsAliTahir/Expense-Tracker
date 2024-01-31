@@ -5,6 +5,7 @@ import 'package:cash_book_expense_tracker/widgets/custom_title.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:provider/provider.dart';
 import '../../provider/category_data_provider.dart';
 
@@ -59,6 +60,9 @@ class _MySelectTypeState extends State<MySelectType> {
                       ? CustomTitle(title: "Transactions")
                       : const SizedBox(),
                   IconButton(
+                    hoverColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
                     onPressed: () {
                       setState(() {
                         show = !show;
@@ -67,8 +71,11 @@ class _MySelectTypeState extends State<MySelectType> {
                         }
                       });
                     },
-                    icon: Icon(
-                        show ? Icons.close : FluentIcons.filter_12_regular),
+                    icon: Bounceable(
+                      onTap: null,
+                      child: Icon(
+                          show ? Icons.close : FluentIcons.filter_12_regular),
+                    ),
                     style: const ButtonStyle(
                         iconSize: MaterialStatePropertyAll(20)),
                   ),

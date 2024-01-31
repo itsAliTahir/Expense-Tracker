@@ -14,8 +14,10 @@ Color lightThemeDrawerBackgroundColor = Colors.black;
 
 // Colors
 Color incomeDark = const Color.fromARGB(255, 156, 128, 241);
+Color incomeDark2 = const Color.fromARGB(255, 100, 79, 163);
 Color incomeLight = const Color.fromARGB(255, 169, 185, 250);
 Color expenseDark = const Color.fromARGB(255, 255, 85, 119);
+Color expenseDark2 = const Color.fromARGB(255, 182, 50, 76);
 Color expenseLight = const Color.fromARGB(255, 251, 146, 131);
 Color selectDark = const Color.fromARGB(255, 79, 220, 154);
 Color selectLight = const Color.fromARGB(255, 150, 255, 218);
