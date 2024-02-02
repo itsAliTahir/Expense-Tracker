@@ -2,9 +2,9 @@
 
 import 'package:cash_book_expense_tracker/screens/income_expense_detail_screen/ie_graph.dart';
 import 'package:flutter/material.dart';
-
 import '../../widgets/custom_title.dart';
 import '../../widgets/appbar.dart';
+import 'ie_transactions_list.dart';
 
 class MyIncomeExpenseDetailScreenBody extends StatefulWidget {
   const MyIncomeExpenseDetailScreenBody({super.key});
@@ -29,26 +29,25 @@ class _MyIncomeExpenseDetailScreenBodyState
           preferredSize: const Size.fromHeight(56),
           child: MyAppBar(GoBack, args[1] as String)),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 25,
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 25,
+            ),
+            Center(
+              child: args[0] as Widget,
+            ),
+            SizedBox(height: screenHeight * 0.05),
+            Container(
+              margin: EdgeInsets.only(top: screenHeight * 0.008, left: 30),
+              child: CustomTitle(
+                title: "${args[1] as String} Report",
+                transition: true,
               ),
-              Center(
-                child: args[0] as Widget,
-              ),
-              SizedBox(height: screenHeight * 0.05),
-              Container(
-                margin: const EdgeInsets.only(top: 20, left: 30),
-                child: CustomTitle(
-                  title: "${args[1] as String} Report",
-                  transition: true,
-                ),
-              ),
-              MyIncomeExpenseGraph(args),
-            ],
-          ),
+            ),
+            MyIncomeExpenseGraph(args),
+            MyIETransactionsList(screen: args[1] as String),
+          ],
         ),
       ),
     );

@@ -31,8 +31,7 @@ class GradientBox extends StatelessWidget {
           child: Container(
             width: screenWidth * 0.4,
             height: 70,
-            padding:
-                const EdgeInsets.only(top: 10, left: 10, right: 3, bottom: 3),
+            padding: const EdgeInsets.all(3),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(3),
               boxShadow: const [
@@ -49,8 +48,8 @@ class GradientBox extends StatelessWidget {
               ),
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 FittedBox(
                   fit: BoxFit.contain,
@@ -59,7 +58,7 @@ class GradientBox extends StatelessWidget {
                     prefix: "\$",
                     textStyle: const TextStyle(
                       decoration: TextDecoration.none,
-                      fontFamily: font1,
+                      fontFamily: font3,
                       color: Colors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -72,7 +71,7 @@ class GradientBox extends StatelessWidget {
                     decoration: TextDecoration.none,
                     fontFamily: font1,
                     letterSpacing: 1,
-                    color: Color.fromARGB(255, 224, 224, 224),
+                    color: Colors.white,
                     fontSize: 10,
                     fontWeight: FontWeight.bold,
                   ),
