@@ -23,19 +23,20 @@ class _MyHomeScreenBodyState extends State<MyHomeScreenBody> {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       key: _scaffoldKey,
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(56),
+          preferredSize: const Size.fromHeight(56),
           child: MyAppBar(OpenDrawer, "CASH BOOK")),
       drawer: const Drawer(),
-      body: const Column(children: [
-        MyCurrentBalance(),
-        MyIncomeExpenses(),
-        MySelectType(),
-        MyTransactionsList(),
-      ]),
+      body: const SafeArea(
+        child: Column(children: [
+          Flexible(flex: 6, child: MyCurrentBalance()),
+          Flexible(flex: 3, child: MyIncomeExpenses()),
+          MySelectType(),
+          Flexible(flex: 18, child: MyTransactionsList()),
+        ]),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       floatingActionButton: const MyFloatingActionButton(),
     );

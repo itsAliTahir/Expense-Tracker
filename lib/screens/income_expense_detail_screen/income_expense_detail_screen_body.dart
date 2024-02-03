@@ -22,7 +22,7 @@ class _MyIncomeExpenseDetailScreenBodyState
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
+    double screenHeight = MediaQuery.of(context).size.height - 56;
     final List args = ModalRoute.of(context)?.settings.arguments as List;
     return Scaffold(
       appBar: PreferredSize(
@@ -31,28 +31,14 @@ class _MyIncomeExpenseDetailScreenBodyState
       body: SafeArea(
         child: Column(
           children: [
-            const SizedBox(
-              height: 25,
-            ),
-            Center(
-              child: args[0] as Widget,
-            ),
             SizedBox(height: screenHeight * 0.05),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(top: screenHeight * 0.008, left: 30),
-                  child: CustomTitle(
-                    title: "${args[1] as String} Report",
-                    transition: true,
-                  ),
-                ),
-                Icon(Icons.line_axis),
-              ],
-            ),
+            Flexible(flex: 1, child: Center(child: args[0] as Widget)),
+            SizedBox(height: screenHeight * 0.045),
             MyIncomeExpenseGraph(args),
-            MyIETransactionsList(screen: args[1] as String),
+            SizedBox(height: screenHeight * 0.03),
+            Flexible(
+                flex: 5,
+                child: MyIETransactionsList(screen: args[1] as String)),
           ],
         ),
       ),
