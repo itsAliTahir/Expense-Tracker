@@ -23,10 +23,11 @@ class _MyHomeScreenBodyState extends State<MyHomeScreenBody> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       key: _scaffoldKey,
       appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(56),
+          preferredSize: Size.fromHeight(56),
           child: MyAppBar(OpenDrawer, "CASH BOOK")),
       drawer: const Drawer(),
       body: const Column(children: [

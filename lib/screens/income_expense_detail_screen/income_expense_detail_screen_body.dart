@@ -38,12 +38,18 @@ class _MyIncomeExpenseDetailScreenBodyState
               child: args[0] as Widget,
             ),
             SizedBox(height: screenHeight * 0.05),
-            Container(
-              margin: EdgeInsets.only(top: screenHeight * 0.008, left: 30),
-              child: CustomTitle(
-                title: "${args[1] as String} Report",
-                transition: true,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: screenHeight * 0.008, left: 30),
+                  child: CustomTitle(
+                    title: "${args[1] as String} Report",
+                    transition: true,
+                  ),
+                ),
+                Icon(Icons.line_axis),
+              ],
             ),
             MyIncomeExpenseGraph(args),
             MyIETransactionsList(screen: args[1] as String),

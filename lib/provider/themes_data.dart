@@ -22,6 +22,8 @@ Color expenseLight = const Color.fromARGB(255, 251, 146, 131);
 Color selectDark = const Color.fromARGB(255, 79, 220, 154);
 Color selectLight = const Color.fromARGB(255, 150, 255, 218);
 Color selectLight2 = const Color.fromARGB(255, 219, 255, 242);
+Color floatingActionColor1 = const Color.fromARGB(255, 0, 176, 158);
+Color floatingActionColor2 = const Color.fromARGB(255, 79, 220, 154);
 
 // Fonts
 const String font1 = "Raleway";

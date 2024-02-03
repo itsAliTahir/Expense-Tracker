@@ -27,8 +27,8 @@ class MyFloatingActionButton extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             gradient: LinearGradient(colors: [
-              selectDark,
-              selectLight,
+              floatingActionColor1,
+              floatingActionColor2,
             ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
         child: const Icon(
           FluentIcons.add_32_regular,

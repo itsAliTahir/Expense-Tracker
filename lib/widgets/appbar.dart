@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, must_be_immutable
 
+import 'package:cash_book_expense_tracker/screens/home_screen/current_balance.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,7 @@ class MyAppBar extends StatelessWidget {
               ? Icons.arrow_back_ios_new
               : FluentIcons.re_order_dots_horizontal_24_regular,
           size: routeName == '/incomeexpensedetailscreenbody' ? 22 : 28,
+          color: Colors.black,
         ),
         onPressed: () {
           openDrawer();
@@ -30,11 +32,11 @@ class MyAppBar extends StatelessWidget {
       title: Text(
         title,
         style: const TextStyle(
-          fontFamily: font1,
-          fontWeight: FontWeight.bold,
-          fontSize: 15,
-          letterSpacing: 7,
-        ),
+            fontFamily: font1,
+            fontWeight: FontWeight.bold,
+            fontSize: 15,
+            letterSpacing: 7,
+            color: Colors.black),
       ),
       centerTitle: true,
     );

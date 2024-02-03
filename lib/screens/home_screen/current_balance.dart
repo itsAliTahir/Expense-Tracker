@@ -34,9 +34,10 @@ class _MyCurrentBalanceState extends State<MyCurrentBalance> {
               AnimatedFlipCounter(
                 value: CurrentBalance(),
                 prefix: "\$",
-                textStyle: const TextStyle(
+                textStyle: TextStyle(
                     fontFamily: font1,
                     fontSize: 34,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold),
               ),
               const SizedBox(
