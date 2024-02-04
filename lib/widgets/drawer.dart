@@ -21,7 +21,7 @@ class MyDrawer extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             gradient: LinearGradient(
                 colors: routeName == myRouteName
-                    ? [floatingActionColor1, floatingActionColor2]
+                    ? [selectDark, selectLight]
                     : [
                         Colors.transparent,
                         Colors.transparent,

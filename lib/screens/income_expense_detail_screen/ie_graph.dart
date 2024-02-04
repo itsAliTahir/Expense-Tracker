@@ -69,7 +69,7 @@ class _MyIncomeExpenseGraphState extends State<MyIncomeExpenseGraph> {
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.only(left: 30, right: 20),
+          margin: const EdgeInsets.only(left: 30, right: 20),
           height: 50,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -80,195 +80,186 @@ class _MyIncomeExpenseGraphState extends State<MyIncomeExpenseGraph> {
                     : screenWidth < 210
                         ? widget.args[1] as String
                         : "${widget.args[1] as String} Report",
-                transition: true,
+                transition: false,
               ),
-              DelayedDisplay(
-                child: Tooltip(
-                  showDuration: const Duration(seconds: 2),
-                  triggerMode: TooltipTriggerMode.tap,
-                  preferBelow: false,
-                  decoration: const BoxDecoration(color: Colors.transparent),
-                  margin: const EdgeInsets.all(0),
-                  richMessage: WidgetSpan(
-                      child: Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(6.0),
-                      child: Text(
-                        showAverage
-                            ? "Frequency Graph"
-                            : "Cumulative ${widget.args[1] as String} Graph",
-                        style: const TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey,
-                            fontFamily: font3,
-                            fontWeight: FontWeight.bold),
-                      ),
+              Tooltip(
+                showDuration: const Duration(seconds: 2),
+                triggerMode: TooltipTriggerMode.tap,
+                preferBelow: false,
+                decoration: const BoxDecoration(color: Colors.transparent),
+                margin: const EdgeInsets.all(0),
+                richMessage: WidgetSpan(
+                    child: Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(6.0),
+                    child: Text(
+                      showAverage
+                          ? "Frequency Graph"
+                          : "Cumulative ${widget.args[1] as String} Graph",
+                      style: const TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey,
+                          fontFamily: font3,
+                          fontWeight: FontWeight.bold),
                     ),
-                  )),
-                  child: IconButton(
-                    hoverColor: Colors.transparent,
-                    splashColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    icon: const Icon(
-                      Icons.line_axis_sharp,
-                      color: Colors.grey,
-                      size: 22,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        showAverage = !showAverage;
-                      });
-                    },
                   ),
+                )),
+                child: IconButton(
+                  hoverColor: Colors.transparent,
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  icon: const Icon(
+                    Icons.line_axis_sharp,
+                    color: Colors.grey,
+                    size: 22,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      showAverage = !showAverage;
+                    });
+                  },
                 ),
               ),
             ],
           ),
         ),
-        DelayedDisplay(
-          slidingBeginOffset: const Offset(0, 0),
-          fadingDuration: Duration(milliseconds: 1000),
-          fadeIn: true,
-          child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-            child: Padding(
-              padding: const EdgeInsets.only(right: 10, left: 10),
-              child: LayoutBuilder(
-                builder: (context, constraints) => SizedBox(
-                  height: screenHeight * 0.22,
-                  child: Center(
-                    child: LineChart(
-                      LineChartData(
-                          backgroundColor: Colors.transparent,
-                          lineTouchData: LineTouchData(
-                              touchTooltipData: LineTouchTooltipData(
-                                  tooltipBgColor: Colors.white,
-                                  tooltipPadding: EdgeInsets.all(0),
-                                  getTooltipItems: (touchedSpots) =>
-                                      GraphToolTipDesign(touchedSpots))),
-                          borderData: FlBorderData(border: const Border()),
-                          titlesData: FlTitlesData(
-                            rightTitles:
-                                const AxisTitles(drawBelowEverything: false),
-                            leftTitles:
-                                const AxisTitles(drawBelowEverything: false),
-                            topTitles:
-                                const AxisTitles(drawBelowEverything: false),
-                            bottomTitles: AxisTitles(
-                              sideTitles: SideTitles(
-                                showTitles: sumList.length < 15 ? true : false,
-                                interval: 1,
-                                getTitlesWidget: (value, meta) =>
-                                    showTitle(value),
-                                reservedSize: 30,
-                              ),
+        Container(
+          margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+          child: Padding(
+            padding: const EdgeInsets.only(right: 10, left: 10),
+            child: LayoutBuilder(
+              builder: (context, constraints) => SizedBox(
+                height: screenHeight * 0.22,
+                child: Center(
+                  child: LineChart(
+                    LineChartData(
+                        backgroundColor: Colors.transparent,
+                        lineTouchData: LineTouchData(
+                            touchTooltipData: LineTouchTooltipData(
+                                tooltipBgColor: Colors.white,
+                                tooltipPadding: EdgeInsets.all(0),
+                                getTooltipItems: (touchedSpots) =>
+                                    GraphToolTipDesign(touchedSpots))),
+                        borderData: FlBorderData(border: const Border()),
+                        titlesData: FlTitlesData(
+                          rightTitles:
+                              const AxisTitles(drawBelowEverything: false),
+                          leftTitles:
+                              const AxisTitles(drawBelowEverything: false),
+                          topTitles:
+                              const AxisTitles(drawBelowEverything: false),
+                          bottomTitles: AxisTitles(
+                            sideTitles: SideTitles(
+                              showTitles: sumList.length < 15 ? true : false,
+                              interval: 1,
+                              getTitlesWidget: (value, meta) =>
+                                  showTitle(value),
+                              reservedSize: 30,
                             ),
                           ),
-                          gridData: FlGridData(
-                            checkToShowHorizontalLine: (value) => true,
-                            checkToShowVerticalLine: (value) => false,
-                            getDrawingHorizontalLine: (value) => FlLine(
-                                color: Theme.of(context).secondaryHeaderColor,
-                                strokeWidth: 0.6,
-                                dashArray: [5, 3]),
-                          ),
-                          lineBarsData: [
-                            LineChartBarData(
-                              isCurved: true,
-                              belowBarData: BarAreaData(
-                                show: false,
-                                gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: widget.args[1] == "Income"
-                                      ? [
-                                          ColorTween(
-                                                  begin: incomeDark,
-                                                  end: incomeDark)
-                                              .lerp(1)!
-                                              .withOpacity(0.4),
-                                          ColorTween(
-                                                  begin: incomeLight,
-                                                  end: incomeLight)
-                                              .lerp(1)!
-                                              .withOpacity(0.3),
-                                          ColorTween(
-                                                  begin: Colors.white,
-                                                  end: Colors.white)
-                                              .lerp(1)!
-                                              .withOpacity(0.0),
-                                        ]
-                                      : [
-                                          ColorTween(
-                                                  begin: expenseDark,
-                                                  end: expenseDark)
-                                              .lerp(1)!
-                                              .withOpacity(0.4),
-                                          ColorTween(
-                                                  begin: expenseLight,
-                                                  end: expenseLight)
-                                              .lerp(1)!
-                                              .withOpacity(0.3),
-                                          ColorTween(
-                                                  begin: Colors.white,
-                                                  end: Colors.white)
-                                              .lerp(1)!
-                                              .withOpacity(0.0),
-                                        ],
-                                ),
-                              ),
+                        ),
+                        gridData: FlGridData(
+                          checkToShowHorizontalLine: (value) => true,
+                          checkToShowVerticalLine: (value) => false,
+                          getDrawingHorizontalLine: (value) => FlLine(
+                              color: Theme.of(context).secondaryHeaderColor,
+                              strokeWidth: 0.6,
+                              dashArray: [5, 3]),
+                        ),
+                        lineBarsData: [
+                          LineChartBarData(
+                            isCurved: true,
+                            belowBarData: BarAreaData(
+                              show: false,
                               gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
                                 colors: widget.args[1] == "Income"
-                                    ? [incomeDark2, incomeDark, incomeLight]
-                                    : [expenseDark2, expenseDark, expenseLight],
+                                    ? [
+                                        ColorTween(
+                                                begin: incomeDark,
+                                                end: incomeDark)
+                                            .lerp(1)!
+                                            .withOpacity(0.4),
+                                        ColorTween(
+                                                begin: incomeLight,
+                                                end: incomeLight)
+                                            .lerp(1)!
+                                            .withOpacity(0.3),
+                                        ColorTween(
+                                                begin: Colors.white,
+                                                end: Colors.white)
+                                            .lerp(1)!
+                                            .withOpacity(0.0),
+                                      ]
+                                    : [
+                                        ColorTween(
+                                                begin: expenseDark,
+                                                end: expenseDark)
+                                            .lerp(1)!
+                                            .withOpacity(0.4),
+                                        ColorTween(
+                                                begin: expenseLight,
+                                                end: expenseLight)
+                                            .lerp(1)!
+                                            .withOpacity(0.3),
+                                        ColorTween(
+                                                begin: Colors.white,
+                                                end: Colors.white)
+                                            .lerp(1)!
+                                            .withOpacity(0.0),
+                                      ],
                               ),
-                              dotData: FlDotData(
-                                show: true,
-                                getDotPainter:
-                                    (spot, percent, barData, index) =>
-                                        FlDotCirclePainter(
-                                            radius: 4,
-                                            color: widget.args[1] == "Income"
-                                                ? expenseDark
-                                                : incomeDark,
-                                            strokeColor: Colors.white,
-                                            strokeWidth: 2),
-                                checkToShowDot: (spot, barData) {
-                                  if (spot.x == 0 && spot.y == 0 ||
-                                      spot.x == sumList.length) {
-                                    return false;
-                                  } else if (sumList.length < 12) {
-                                    return true;
-                                  } else if (sumList.length < 22) {
-                                    return spot.x % 2 == 0 ? true : false;
-                                  } else if (sumList.length < 32) {
-                                    return spot.x % 3 == 0 ? true : false;
-                                  } else if (sumList.length < 42) {
-                                    return spot.x % 4 == 0 ? true : false;
-                                  } else if (sumList.length < 52) {
-                                    return spot.x % 5 == 0 ? true : false;
-                                  } else if (sumList.length < 62) {
-                                    return spot.x % 6 == 0 ? true : false;
-                                  } else if (sumList.length < 72) {
-                                    return spot.x % 7 == 0 ? true : false;
-                                  } else {
-                                    return spot.x % 12 == 0 ? true : false;
-                                  }
-                                },
-                              ),
-                              spots: [
-                                const FlSpot(0, 0),
-                                for (int i = 1; i <= sumList.length; i++)
-                                  FlSpot(
-                                      i.toDouble(), sumList[i - 1].toDouble()),
-                              ],
-                              shadow: const Shadow(
-                                  offset: Offset(0, 3),
-                                  color: Color.fromARGB(30, 0, 0, 0)),
-                              barWidth: 2.5,
                             ),
-                          ]),
-                    ),
+                            gradient: LinearGradient(
+                              colors: widget.args[1] == "Income"
+                                  ? [incomeDark2, incomeDark, incomeLight]
+                                  : [expenseDark2, expenseDark, expenseLight],
+                            ),
+                            dotData: FlDotData(
+                              show: true,
+                              getDotPainter: (spot, percent, barData, index) =>
+                                  FlDotCirclePainter(
+                                      radius: 4,
+                                      color: widget.args[1] == "Income"
+                                          ? expenseDark
+                                          : incomeDark,
+                                      strokeColor: Colors.white,
+                                      strokeWidth: 2),
+                              checkToShowDot: (spot, barData) {
+                                if (spot.x == 0 && spot.y == 0 ||
+                                    spot.x == sumList.length) {
+                                  return false;
+                                } else if (sumList.length < 12) {
+                                  return true;
+                                } else if (sumList.length < 22) {
+                                  return spot.x % 2 == 0 ? true : false;
+                                } else if (sumList.length < 32) {
+                                  return spot.x % 3 == 0 ? true : false;
+                                } else if (sumList.length < 42) {
+                                  return spot.x % 4 == 0 ? true : false;
+                                } else if (sumList.length < 52) {
+                                  return spot.x % 5 == 0 ? true : false;
+                                } else if (sumList.length < 62) {
+                                  return spot.x % 6 == 0 ? true : false;
+                                } else if (sumList.length < 72) {
+                                  return spot.x % 7 == 0 ? true : false;
+                                } else {
+                                  return spot.x % 12 == 0 ? true : false;
+                                }
+                              },
+                            ),
+                            spots: [
+                              const FlSpot(0, 0),
+                              for (int i = 1; i <= sumList.length; i++)
+                                FlSpot(i.toDouble(), sumList[i - 1].toDouble()),
+                            ],
+                            shadow: const Shadow(
+                                offset: Offset(0, 3),
+                                color: Color.fromARGB(30, 0, 0, 0)),
+                            barWidth: 2.5,
+                          ),
+                        ]),
                   ),
                 ),
               ),

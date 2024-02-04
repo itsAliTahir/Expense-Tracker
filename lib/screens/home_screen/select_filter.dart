@@ -103,7 +103,7 @@ class _MySelectTypeState extends State<MySelectType> {
                           decoration: BoxDecoration(
                             color: allSelectedCategories
                                     .contains(CategoriesToShow()[i])
-                                ? selectLight2
+                                ? selectDim
                                 : Colors.white,
                             border: Border.all(
                                 width: allSelectedCategories
