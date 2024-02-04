@@ -85,11 +85,17 @@ class _MyIncomeExpenseGraphState extends State<MyIncomeExpenseGraph> {
               Tooltip(
                 showDuration: const Duration(seconds: 2),
                 triggerMode: TooltipTriggerMode.tap,
+                onTriggered: () {
+                  setState(() {
+                    showAverage = !showAverage;
+                  });
+                },
                 preferBelow: false,
                 decoration: const BoxDecoration(color: Colors.transparent),
                 margin: const EdgeInsets.all(0),
                 richMessage: WidgetSpan(
                     child: Card(
+                  color: Colors.white,
                   child: Padding(
                     padding: const EdgeInsets.all(6.0),
                     child: Text(
@@ -104,20 +110,16 @@ class _MyIncomeExpenseGraphState extends State<MyIncomeExpenseGraph> {
                     ),
                   ),
                 )),
-                child: IconButton(
+                child: const IconButton(
                   hoverColor: Colors.transparent,
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.line_axis_sharp,
                     color: Colors.grey,
                     size: 22,
                   ),
-                  onPressed: () {
-                    setState(() {
-                      showAverage = !showAverage;
-                    });
-                  },
+                  onPressed: null,
                 ),
               ),
             ],
