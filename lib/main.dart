@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+
         theme: ThemeData(
             textTheme: const TextTheme(
               titleLarge: TextStyle(

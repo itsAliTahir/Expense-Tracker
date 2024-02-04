@@ -84,22 +84,25 @@ class _MyIncomeExpenseGraphState extends State<MyIncomeExpenseGraph> {
               ),
               DelayedDisplay(
                 child: Tooltip(
+                  showDuration: const Duration(seconds: 2),
                   triggerMode: TooltipTriggerMode.tap,
                   preferBelow: false,
-                  decoration: BoxDecoration(color: Colors.transparent),
-                  margin: EdgeInsets.all(0),
+                  decoration: const BoxDecoration(color: Colors.transparent),
+                  margin: const EdgeInsets.all(0),
                   richMessage: WidgetSpan(
-                      child: Container(
-                    padding: EdgeInsets.all(3),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Text(
-                      showAverage
-                          ? "Frequency Graph"
-                          : "Cumulative ${widget.args[1] as String} Graph",
-                      style: TextStyle(fontSize: 12, color: Colors.black),
+                      child: Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Text(
+                        showAverage
+                            ? "Frequency Graph"
+                            : "Cumulative ${widget.args[1] as String} Graph",
+                        style: const TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                            fontFamily: font3,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   )),
                   child: IconButton(
@@ -123,7 +126,9 @@ class _MyIncomeExpenseGraphState extends State<MyIncomeExpenseGraph> {
           ),
         ),
         DelayedDisplay(
-          slidingBeginOffset: const Offset(0, 0.2),
+          slidingBeginOffset: const Offset(0, 0),
+          fadingDuration: Duration(milliseconds: 1000),
+          fadeIn: true,
           child: Container(
             margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
             child: Padding(

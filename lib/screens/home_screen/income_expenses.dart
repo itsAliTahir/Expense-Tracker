@@ -26,16 +26,18 @@ class MyIncomeExpenses extends StatelessWidget {
             gradient1: incomeDark,
             gradient2: incomeLight,
             openDetail: () {
-              Navigator.pushNamed(context, '/incomeexpensedetailscreenbody',
-                  arguments: [
-                    GradientBox(
-                        amount: TotalIncome(),
-                        title: "Income",
-                        gradient1: incomeDark,
-                        gradient2: incomeLight,
-                        openDetail: null),
-                    "Income"
-                  ]);
+              if (TotalIncome() != 0) {
+                Navigator.pushNamed(context, '/incomeexpensedetailscreenbody',
+                    arguments: [
+                      GradientBox(
+                          amount: TotalIncome(),
+                          title: "Income",
+                          gradient1: incomeDark,
+                          gradient2: incomeLight,
+                          openDetail: null),
+                      "Income"
+                    ]);
+              }
             }),
         GradientBox(
           amount: TotalExpense(),
@@ -43,16 +45,18 @@ class MyIncomeExpenses extends StatelessWidget {
           gradient1: expenseDark,
           gradient2: expenseLight,
           openDetail: () {
-            Navigator.pushNamed(context, '/incomeexpensedetailscreenbody',
-                arguments: [
-                  GradientBox(
-                      amount: TotalExpense(),
-                      title: "Expense",
-                      gradient1: expenseDark,
-                      gradient2: expenseLight,
-                      openDetail: null),
-                  "Expense"
-                ]);
+            if (TotalExpense() != 0) {
+              Navigator.pushNamed(context, '/incomeexpensedetailscreenbody',
+                  arguments: [
+                    GradientBox(
+                        amount: TotalExpense(),
+                        title: "Expense",
+                        gradient1: expenseDark,
+                        gradient2: expenseLight,
+                        openDetail: null),
+                    "Expense"
+                  ]);
+            }
           },
         ),
       ],

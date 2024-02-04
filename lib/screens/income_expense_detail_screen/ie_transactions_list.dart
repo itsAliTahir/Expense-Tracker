@@ -7,10 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../provider/transaction_data_provider.dart';
 
-class MyIETransactionsList extends StatelessWidget {
+class MyIETransactionsList extends StatefulWidget {
   String screen;
   MyIETransactionsList({required this.screen, super.key});
 
+  @override
+  State<MyIETransactionsList> createState() => _MyIETransactionsListState();
+}
+
+class _MyIETransactionsListState extends State<MyIETransactionsList> {
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
@@ -21,11 +26,11 @@ class MyIETransactionsList extends StatelessWidget {
     return Consumer<CategoryDataProvider>(
       builder: (context, categoryData, child) {
         final itemsList = routeName == '/incomeexpensedetailscreenbody' &&
-                screen == "Income"
+                widget.screen == "Income"
             ? Provider.of<TransactionDataProvider>(context, listen: true)
                 .incomeList
             : routeName == '/incomeexpensedetailscreenbody' &&
-                    screen == "Expense"
+                    widget.screen == "Expense"
                 ? Provider.of<TransactionDataProvider>(context, listen: true)
                     .expenseList
                 : Provider.of<TransactionDataProvider>(context, listen: true)

@@ -31,11 +31,20 @@ class _MyIncomeExpenseDetailScreenBodyState
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(height: screenHeight * 0.05),
-            Center(child: args[0] as Widget),
-            SizedBox(height: screenHeight * 0.045),
-            MyIncomeExpenseGraph(args),
-            SizedBox(height: screenHeight * 0.03),
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border: const Border(bottom: BorderSide(color: Colors.grey))),
+              child: Column(
+                children: [
+                  SizedBox(height: screenHeight * 0.05),
+                  Center(child: args[0] as Widget),
+                  SizedBox(height: screenHeight * 0.045),
+                  MyIncomeExpenseGraph(args),
+                  SizedBox(height: screenHeight * 0.03),
+                ],
+              ),
+            ),
             Flexible(
                 flex: 5,
                 child: MyIETransactionsList(screen: args[1] as String)),

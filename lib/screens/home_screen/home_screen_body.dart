@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:cash_book_expense_tracker/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/appbar.dart';
 import 'current_balance.dart';
@@ -28,7 +29,7 @@ class _MyHomeScreenBodyState extends State<MyHomeScreenBody> {
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(56),
           child: MyAppBar(OpenDrawer, "CASH BOOK")),
-      drawer: const Drawer(),
+      drawer: const MyDrawer(),
       body: const SafeArea(
         child: Column(children: [
           Flexible(flex: 6, child: MyCurrentBalance()),

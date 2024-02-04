@@ -29,3 +29,6 @@ Color floatingActionColor2 = const Color.fromARGB(255, 79, 220, 154);
 const String font1 = "Raleway";
 const String font2 = "Noto";
 const String font3 = "Poppins";
+
+// Variables
+double scrollValue = 0;
