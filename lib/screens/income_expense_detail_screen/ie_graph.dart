@@ -38,20 +38,39 @@ class _MyIncomeExpenseGraphState extends State<MyIncomeExpenseGraph> {
     for (int i = 0; i < data.length; i++) {
       if (showAverage == false) {
         if (data[i].amount < 0) {
-          temp = temp + (data[i].amount * -1);
+          temp += (data[i].amount * -1);
         } else {
-          temp = temp + data[i].amount;
+          temp += data[i].amount;
         }
         sumList.add(temp);
       } else {
-        sumList.add(data[i].amount * -1);
+        if (data[i].amount < 0) {
+          sumList.add(data[i].amount * -1);
+        } else {
+          sumList.add(data[i].amount);
+        }
       }
+    }
+    List<LineTooltipItem> GraphToolTipDesign(List<LineBarSpot> data) {
+      List<LineTooltipItem> test = [
+        LineTooltipItem(
+            sumList.length < 15
+                ? "${data[0].y}"
+                : "${data[0].x.toInt()}\n${data[0].y}",
+            TextStyle(
+                color: widget.args[1] as String == "Income"
+                    ? incomeDark
+                    : expenseDark,
+                fontWeight: FontWeight.bold))
+      ];
+      return test;
     }
 
     return Column(
       children: [
         Container(
           margin: EdgeInsets.only(left: 30, right: 20),
+          height: 50,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -63,20 +82,42 @@ class _MyIncomeExpenseGraphState extends State<MyIncomeExpenseGraph> {
                         : "${widget.args[1] as String} Report",
                 transition: true,
               ),
-              IconButton(
-                hoverColor: Colors.transparent,
-                splashColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                icon: Icon(
-                  Icons.line_axis_sharp,
-                  color: Colors.grey,
-                  size: 22,
+              DelayedDisplay(
+                child: Tooltip(
+                  triggerMode: TooltipTriggerMode.tap,
+                  preferBelow: false,
+                  decoration: BoxDecoration(color: Colors.transparent),
+                  margin: EdgeInsets.all(0),
+                  richMessage: WidgetSpan(
+                      child: Container(
+                    padding: EdgeInsets.all(3),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Text(
+                      showAverage
+                          ? "Frequency Graph"
+                          : "Cumulative ${widget.args[1] as String} Graph",
+                      style: TextStyle(fontSize: 12, color: Colors.black),
+                    ),
+                  )),
+                  child: IconButton(
+                    hoverColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    icon: const Icon(
+                      Icons.line_axis_sharp,
+                      color: Colors.grey,
+                      size: 22,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        showAverage = !showAverage;
+                      });
+                    },
+                  ),
                 ),
-                onPressed: () {
-                  setState(() {
-                    showAverage = !showAverage;
-                  });
-                },
               ),
             ],
           ),
@@ -94,11 +135,12 @@ class _MyIncomeExpenseGraphState extends State<MyIncomeExpenseGraph> {
                     child: LineChart(
                       LineChartData(
                           backgroundColor: Colors.transparent,
-                          lineTouchData: const LineTouchData(
+                          lineTouchData: LineTouchData(
                               touchTooltipData: LineTouchTooltipData(
-                            tooltipBgColor: Colors.white,
-                            tooltipPadding: EdgeInsets.all(0),
-                          )),
+                                  tooltipBgColor: Colors.white,
+                                  tooltipPadding: EdgeInsets.all(0),
+                                  getTooltipItems: (touchedSpots) =>
+                                      GraphToolTipDesign(touchedSpots))),
                           borderData: FlBorderData(border: const Border()),
                           titlesData: FlTitlesData(
                             rightTitles:

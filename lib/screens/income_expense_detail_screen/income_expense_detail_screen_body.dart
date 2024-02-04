@@ -32,7 +32,7 @@ class _MyIncomeExpenseDetailScreenBodyState
         child: Column(
           children: [
             SizedBox(height: screenHeight * 0.05),
-            Flexible(flex: 1, child: Center(child: args[0] as Widget)),
+            Center(child: args[0] as Widget),
             SizedBox(height: screenHeight * 0.045),
             MyIncomeExpenseGraph(args),
             SizedBox(height: screenHeight * 0.03),

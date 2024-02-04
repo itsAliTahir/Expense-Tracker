@@ -37,6 +37,7 @@ class MyIETransactionsList extends StatelessWidget {
                     .toList();
 
         return ListView.separated(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           padding: const EdgeInsets.only(top: 0, left: 0, right: 0, bottom: 15),
           itemCount: itemsList.length,
           itemBuilder: (BuildContext context, int index) {

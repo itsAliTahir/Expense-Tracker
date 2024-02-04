@@ -30,6 +30,7 @@ class GradientBox extends StatelessWidget {
           onTap: amount != 0 ? openDetail : null,
           child: Container(
             width: screenWidth * 0.4,
+            height: 70,
             padding: const EdgeInsets.all(3),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(3),

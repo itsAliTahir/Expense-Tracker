@@ -32,7 +32,7 @@ class _MyHomeScreenBodyState extends State<MyHomeScreenBody> {
       body: const SafeArea(
         child: Column(children: [
           Flexible(flex: 6, child: MyCurrentBalance()),
-          Flexible(flex: 3, child: MyIncomeExpenses()),
+          MyIncomeExpenses(),
           MySelectType(),
           Flexible(flex: 18, child: MyTransactionsList()),
         ]),
