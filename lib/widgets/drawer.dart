@@ -36,10 +36,13 @@ class MyDrawer extends StatelessWidget {
           title: Text(
             title,
             style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: routeName == myRouteName
-                    ? Colors.white
-                    : const Color.fromARGB(255, 73, 69, 79)),
+              fontWeight: FontWeight.bold,
+              color: routeName == myRouteName
+                  ? Colors.white
+                  : const Color.fromARGB(255, 73, 69, 79),
+              fontSize: 15,
+              fontFamily: font1,
+            ),
           ),
           onTap: () {},
         ),
@@ -82,7 +85,7 @@ class MyDrawer extends StatelessWidget {
                 MyListTile(
                     title: "Home",
                     icon: FluentIcons.home_32_filled,
-                    myRouteName: "/"),
+                    myRouteName: routeHome),
                 MyListTile(
                     title: "Analysis",
                     icon: FluentIcons.data_area_20_filled,

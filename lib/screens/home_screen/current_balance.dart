@@ -4,7 +4,6 @@ import 'package:cash_book_expense_tracker/provider/themes_data.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'package:provider/provider.dart';
-
 import '../../provider/transaction_data_provider.dart';
 
 class MyCurrentBalance extends StatefulWidget {
@@ -34,7 +33,7 @@ class _MyCurrentBalanceState extends State<MyCurrentBalance> {
               AnimatedFlipCounter(
                 value: CurrentBalance(),
                 prefix: "\$",
-                textStyle: TextStyle(
+                textStyle: const TextStyle(
                     fontFamily: font1,
                     fontSize: 34,
                     color: Colors.black,

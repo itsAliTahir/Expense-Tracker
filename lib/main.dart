@@ -1,10 +1,10 @@
 import 'package:cash_book_expense_tracker/provider/category_data_provider.dart';
-import 'package:cash_book_expense_tracker/screens/income_expense_detail_screen/income_expense_detail_screen_body.dart';
 import 'package:provider/provider.dart';
 import 'provider/themes_data.dart';
 import 'package:flutter/material.dart';
 import 'provider/transaction_data_provider.dart';
 import 'screens/home_screen/home_screen_body.dart';
+import 'screens/home_screen/income_expense_detail_screen/income_expense_detail_screen_body.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,11 +48,10 @@ class MyApp extends StatelessWidget {
         themeMode: ThemeMode.light,
         // home: MyHomeScreenBody(),
         // home: MyHomePage(),
-        initialRoute: '/',
+        initialRoute: routeHome,
         routes: {
-          '/': (context) => const MyHomeScreenBody(),
-          '/incomeexpensedetailscreenbody': (context) =>
-              const MyIncomeExpenseDetailScreenBody()
+          routeHome: (context) => const MyHomeScreenBody(),
+          routeIEScreen: (context) => const MyIncomeExpenseDetailScreenBody()
         },
       ),
     );

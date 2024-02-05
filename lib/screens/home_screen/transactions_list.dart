@@ -1,5 +1,6 @@
 import 'package:cash_book_expense_tracker/provider/category_data_provider.dart';
 import 'package:cash_book_expense_tracker/provider/themes_data.dart';
+import 'package:cash_book_expense_tracker/widgets/bottom_detail_sheet.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +13,15 @@ class MyTransactionsList extends StatelessWidget {
   Widget build(BuildContext context) {
     final allCategories =
         Provider.of<CategoryDataProvider>(context, listen: false).allCategories;
+
+    void _showModalBottomSheet() {
+      showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        context: context,
+        builder: (context) => MyBottomDetailSheet(),
+      );
+    }
 
     return Consumer<CategoryDataProvider>(
       builder: (context, categoryData, child) {
@@ -32,6 +42,7 @@ class MyTransactionsList extends StatelessWidget {
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 7),
                 child: ListTile(
+                  onTap: _showModalBottomSheet,
                   horizontalTitleGap: 25,
                   leading: Tooltip(
                       message: allCategories[itemsList[index].iconId].name,

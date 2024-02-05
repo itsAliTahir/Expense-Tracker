@@ -1,12 +1,11 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, must_be_immutable
 
-import 'package:delayed_display/delayed_display.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../provider/themes_data.dart';
-import '../../provider/transaction_data_provider.dart';
-import '../../widgets/custom_title.dart';
+import '../../../provider/themes_data.dart';
+import '../../../provider/transaction_data_provider.dart';
+import '../../../widgets/custom_title.dart';
 
 class MyIncomeExpenseGraph extends StatefulWidget {
   var args;
@@ -139,7 +138,7 @@ class _MyIncomeExpenseGraphState extends State<MyIncomeExpenseGraph> {
                         lineTouchData: LineTouchData(
                             touchTooltipData: LineTouchTooltipData(
                                 tooltipBgColor: Colors.white,
-                                tooltipPadding: EdgeInsets.all(0),
+                                tooltipPadding: const EdgeInsets.all(0),
                                 getTooltipItems: (touchedSpots) =>
                                     GraphToolTipDesign(touchedSpots))),
                         borderData: FlBorderData(border: const Border()),

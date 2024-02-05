@@ -5,7 +5,7 @@ import 'package:cash_book_expense_tracker/provider/themes_data.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../provider/transaction_data_provider.dart';
+import '../../../provider/transaction_data_provider.dart';
 
 class MyIETransactionsList extends StatefulWidget {
   String screen;
@@ -18,19 +18,17 @@ class MyIETransactionsList extends StatefulWidget {
 class _MyIETransactionsListState extends State<MyIETransactionsList> {
   @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
     final allCategories =
         Provider.of<CategoryDataProvider>(context, listen: false).allCategories;
     final routeName = ModalRoute.of(context)!.settings.name;
 
     return Consumer<CategoryDataProvider>(
       builder: (context, categoryData, child) {
-        final itemsList = routeName == '/incomeexpensedetailscreenbody' &&
+        final itemsList = routeName == routeIEScreen &&
                 widget.screen == "Income"
             ? Provider.of<TransactionDataProvider>(context, listen: true)
                 .incomeList
-            : routeName == '/incomeexpensedetailscreenbody' &&
-                    widget.screen == "Expense"
+            : routeName == routeIEScreen && widget.screen == "Expense"
                 ? Provider.of<TransactionDataProvider>(context, listen: true)
                     .expenseList
                 : Provider.of<TransactionDataProvider>(context, listen: true)

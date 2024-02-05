@@ -27,16 +27,15 @@ class MyIncomeExpenses extends StatelessWidget {
             gradient2: incomeLight,
             openDetail: () {
               if (TotalIncome() != 0) {
-                Navigator.pushNamed(context, '/incomeexpensedetailscreenbody',
-                    arguments: [
-                      GradientBox(
-                          amount: TotalIncome(),
-                          title: "Income",
-                          gradient1: incomeDark,
-                          gradient2: incomeLight,
-                          openDetail: null),
-                      "Income"
-                    ]);
+                Navigator.pushNamed(context, routeIEScreen, arguments: [
+                  GradientBox(
+                      amount: TotalIncome(),
+                      title: "Income",
+                      gradient1: incomeDark,
+                      gradient2: incomeLight,
+                      openDetail: null),
+                  "Income"
+                ]);
               }
             }),
         GradientBox(
@@ -46,16 +45,15 @@ class MyIncomeExpenses extends StatelessWidget {
           gradient2: expenseLight,
           openDetail: () {
             if (TotalExpense() != 0) {
-              Navigator.pushNamed(context, '/incomeexpensedetailscreenbody',
-                  arguments: [
-                    GradientBox(
-                        amount: TotalExpense(),
-                        title: "Expense",
-                        gradient1: expenseDark,
-                        gradient2: expenseLight,
-                        openDetail: null),
-                    "Expense"
-                  ]);
+              Navigator.pushNamed(context, routeIEScreen, arguments: [
+                GradientBox(
+                    amount: TotalExpense(),
+                    title: "Expense",
+                    gradient1: expenseDark,
+                    gradient2: expenseLight,
+                    openDetail: null),
+                "Expense"
+              ]);
             }
           },
         ),

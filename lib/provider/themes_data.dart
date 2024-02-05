@@ -19,7 +19,6 @@ Color incomeLight = const Color.fromARGB(255, 169, 185, 250);
 Color expenseDark = const Color.fromARGB(255, 255, 85, 119);
 Color expenseDark2 = const Color.fromARGB(255, 182, 50, 76);
 Color expenseLight = const Color.fromARGB(255, 251, 146, 131);
-
 Color selectDark = const Color.fromARGB(255, 0, 176, 158);
 Color selectLight = const Color.fromARGB(255, 79, 220, 154);
 Color selectDim = const Color.fromARGB(255, 219, 255, 242);
@@ -29,5 +28,6 @@ const String font1 = "Raleway";
 const String font2 = "Noto";
 const String font3 = "Poppins";
 
-// Variables
-double scrollValue = 0;
+// Routes
+const routeHome = '/';
+const routeIEScreen = '/incomeexpensedetailscreenbody';
