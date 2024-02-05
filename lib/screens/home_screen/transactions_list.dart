@@ -14,15 +14,6 @@ class MyTransactionsList extends StatelessWidget {
     final allCategories =
         Provider.of<CategoryDataProvider>(context, listen: false).allCategories;
 
-    void _showModalBottomSheet() {
-      showModalBottomSheet(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        context: context,
-        builder: (context) => MyBottomDetailSheet(),
-      );
-    }
-
     return Consumer<CategoryDataProvider>(
       builder: (context, categoryData, child) {
         final itemsList =
@@ -42,7 +33,9 @@ class MyTransactionsList extends StatelessWidget {
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 7),
                 child: ListTile(
-                  onTap: _showModalBottomSheet,
+                  onTap: () {
+                    OpenModalBottomSheet(context, itemsList[index]);
+                  },
                   horizontalTitleGap: 25,
                   leading: Tooltip(
                       message: allCategories[itemsList[index].iconId].name,
