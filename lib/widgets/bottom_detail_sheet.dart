@@ -23,12 +23,16 @@ OpenModalBottomSheet(BuildContext context, Transaction item) {
 
 class MyBottomDetailSheet extends StatelessWidget {
   Transaction item;
+
   MyBottomDetailSheet({required this.item, super.key});
 
   @override
   Widget build(BuildContext context) {
     final iconList =
         Provider.of<CategoryDataProvider>(context, listen: false).allCategories;
+    final DeleteTransaction =
+        Provider.of<CategoryDataProvider>(context, listen: false)
+            .DeleteTransaction;
     double screenHeight = MediaQuery.of(context).size.height;
     return Container(
       color: Colors.transparent,
@@ -167,7 +171,11 @@ class MyBottomDetailSheet extends StatelessWidget {
                               () {
                                 Navigator.pop(context);
                               },
-                              () {}
+                              () {
+                                Navigator.pop(context);
+                                Navigator.pop(context);
+                                DeleteTransaction(item.id);
+                              }
                             ]);
                       }),
                 ],

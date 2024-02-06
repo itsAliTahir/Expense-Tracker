@@ -131,4 +131,10 @@ class TransactionDataProvider with ChangeNotifier {
     }
     return sum * -1;
   }
+
+  void DeleteTransaction(String id) {
+    print(id);
+    _myExpensesList.removeWhere((element) => element.id == id);
+    notifyListeners();
+  }
 }
