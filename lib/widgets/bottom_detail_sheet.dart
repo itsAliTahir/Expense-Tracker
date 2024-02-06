@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, non_constant_identifier_names
+
 import 'package:cash_book_expense_tracker/provider/themes_data.dart';
 import 'package:cash_book_expense_tracker/widgets/circular_gradient_icon_button.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
@@ -27,9 +29,8 @@ class MyBottomDetailSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     final iconList =
         Provider.of<CategoryDataProvider>(context, listen: false).allCategories;
-    double screenWidth = MediaQuery.of(context).size.width;
+    // double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    print(screenWidth);
     return Container(
       color: Colors.transparent,
       height: screenHeight * 0.56,
@@ -54,30 +55,38 @@ class MyBottomDetailSheet extends StatelessWidget {
                   children: [
                     Text(
                       item.title,
+                      textAlign: TextAlign.justify,
                       style: const TextStyle(
                           fontFamily: font3,
                           fontSize: 14,
                           fontWeight: FontWeight.bold),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Stack(
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          item.date,
-                          style: TextStyle(
-                              fontFamily: font2,
-                              color: Theme.of(context).secondaryHeaderColor,
-                              fontSize: 11,
-                              fontWeight: FontWeight.bold),
+                        Align(
+                          alignment: Alignment.bottomLeft,
+                          child: Text(
+                            item.date,
+                            style: TextStyle(
+                                fontFamily: font2,
+                                color: Theme.of(context).secondaryHeaderColor,
+                                fontSize: 11,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
-                        Text(
-                          "\$${item.amount.toString()}",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontFamily: font1,
-                              fontWeight: FontWeight.bold,
-                              color:
-                                  item.amount >= 0 ? incomeDark : expenseDark),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            "\$${item.amount.toString()}",
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontFamily: font1,
+                                fontWeight: FontWeight.bold,
+                                color: item.amount >= 0
+                                    ? incomeDark
+                                    : expenseDark),
+                          ),
                         ),
                       ],
                     ),
@@ -86,6 +95,7 @@ class MyBottomDetailSheet extends StatelessWidget {
                       item.description != " "
                           ? item.description
                           : "No Description",
+                      textAlign: TextAlign.justify,
                       style: TextStyle(
                           fontFamily: font2,
                           color: item.description != " "
@@ -101,21 +111,28 @@ class MyBottomDetailSheet extends StatelessWidget {
           ),
           Positioned(
             left: 0,
-            child: Container(
-              width: 60,
-              height: 60,
-              margin: const EdgeInsets.only(
-                left: 50,
-                right: 20,
-                bottom: 30,
-              ),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
-                  gradient: LinearGradient(colors: [selectDark, selectLight])),
-              child: Icon(
-                iconList[item.iconId].icon,
-                size: 26,
-                color: Colors.white,
+            child: Tooltip(
+              message: iconList[item.iconId].name,
+              child: Bounceable(
+                onTap: () {},
+                child: Container(
+                  width: 60,
+                  height: 60,
+                  margin: const EdgeInsets.only(
+                    left: 50,
+                    right: 20,
+                    bottom: 30,
+                  ),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      gradient:
+                          LinearGradient(colors: [selectDark, selectLight])),
+                  child: Icon(
+                    iconList[item.iconId].icon,
+                    size: 26,
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ),
           ),
@@ -129,6 +146,7 @@ class MyBottomDetailSheet extends StatelessWidget {
                       size: 40,
                       icon: FluentIcons.edit_32_filled,
                       colorsList: [incomeDark, incomeLight],
+                      toolTip: "Edit",
                       onTap: () {}),
                   const SizedBox(
                     width: 3,
@@ -137,6 +155,7 @@ class MyBottomDetailSheet extends StatelessWidget {
                       size: 40,
                       icon: FluentIcons.delete_32_filled,
                       colorsList: [expenseDark, expenseLight],
+                      toolTip: "Delete",
                       onTap: () {}),
                 ],
               )),

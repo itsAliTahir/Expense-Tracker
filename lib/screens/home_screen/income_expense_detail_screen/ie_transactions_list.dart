@@ -6,6 +6,7 @@ import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../provider/transaction_data_provider.dart';
+import '../../../widgets/bottom_detail_sheet.dart';
 
 class MyIETransactionsList extends StatefulWidget {
   String screen;
@@ -48,6 +49,9 @@ class _MyIETransactionsListState extends State<MyIETransactionsList> {
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 7),
                 child: ListTile(
+                  onTap: () {
+                    OpenModalBottomSheet(context, itemsList[index]);
+                  },
                   horizontalTitleGap: 25,
                   leading: Tooltip(
                       message: allCategories[itemsList[index].iconId].name,

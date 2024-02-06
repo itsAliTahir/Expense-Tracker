@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_typing_uninitialized_variables, must_be_immutable
+// ignore_for_file: prefer_typing_uninitialized_variables, must_be_immutable, non_constant_identifier_names
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../../../provider/themes_data.dart';
 import '../../../provider/transaction_data_provider.dart';
 import '../../../widgets/custom_title.dart';
+import 'dart:io';
 
 class MyIncomeExpenseGraph extends StatefulWidget {
   var args;
@@ -84,11 +85,13 @@ class _MyIncomeExpenseGraphState extends State<MyIncomeExpenseGraph> {
               Tooltip(
                 showDuration: const Duration(seconds: 2),
                 triggerMode: TooltipTriggerMode.tap,
-                onTriggered: () {
-                  setState(() {
-                    showAverage = !showAverage;
-                  });
-                },
+                onTriggered: Platform.isWindows
+                    ? null
+                    : () {
+                        setState(() {
+                          showAverage = !showAverage;
+                        });
+                      },
                 preferBelow: false,
                 decoration: const BoxDecoration(color: Colors.transparent),
                 margin: const EdgeInsets.all(0),
@@ -109,16 +112,22 @@ class _MyIncomeExpenseGraphState extends State<MyIncomeExpenseGraph> {
                     ),
                   ),
                 )),
-                child: const IconButton(
+                child: IconButton(
                   hoverColor: Colors.transparent,
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.line_axis_sharp,
                     color: Colors.grey,
                     size: 22,
                   ),
-                  onPressed: null,
+                  onPressed: Platform.isWindows
+                      ? () {
+                          setState(() {
+                            showAverage = !showAverage;
+                          });
+                        }
+                      : null,
                 ),
               ),
             ],

@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:cash_book_expense_tracker/provider/themes_data.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -61,9 +63,9 @@ class MyDrawer extends StatelessWidget {
                 Center(
                   child: GestureDetector(
                     onTap: () {
-                      final GlobalKey<ScaffoldState> _scaffoldKey =
+                      final GlobalKey<ScaffoldState> scaffoldKey =
                           GlobalKey<ScaffoldState>();
-                      _scaffoldKey.currentState?.closeDrawer();
+                      scaffoldKey.currentState?.closeDrawer();
                     },
                     child: Container(
                       width: 70,

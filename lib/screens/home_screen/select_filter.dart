@@ -59,25 +59,28 @@ class _MySelectTypeState extends State<MySelectType> {
                   screenWidth > 155
                       ? CustomTitle(title: "Transactions")
                       : const SizedBox(),
-                  IconButton(
-                    hoverColor: Colors.transparent,
-                    splashColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onPressed: () {
-                      setState(() {
-                        show = !show;
-                        if (show == false) {
-                          ResetCategories();
-                        }
-                      });
-                    },
-                    icon: Bounceable(
-                      onTap: null,
-                      child: Icon(
-                          show ? Icons.close : FluentIcons.filter_12_regular),
+                  Tooltip(
+                    message: "Filter",
+                    child: IconButton(
+                      hoverColor: Colors.transparent,
+                      splashColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onPressed: () {
+                        setState(() {
+                          show = !show;
+                          if (show == false) {
+                            ResetCategories();
+                          }
+                        });
+                      },
+                      icon: Bounceable(
+                        onTap: null,
+                        child: Icon(
+                            show ? Icons.close : FluentIcons.filter_12_regular),
+                      ),
+                      style: const ButtonStyle(
+                          iconSize: MaterialStatePropertyAll(20)),
                     ),
-                    style: const ButtonStyle(
-                        iconSize: MaterialStatePropertyAll(20)),
                   ),
                 ],
               ),
