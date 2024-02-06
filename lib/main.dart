@@ -37,6 +37,13 @@ class MyApp extends StatelessWidget {
             appBarTheme: AppBarTheme(color: lightThemeScaffold),
             drawerTheme: DrawerThemeData(
                 backgroundColor: lightThemeDrawerBackgroundColor),
+            textButtonTheme: TextButtonThemeData(
+                style: ButtonStyle(
+                    textStyle: MaterialStatePropertyAll(TextStyle(
+                        fontWeight: FontWeight.bold, fontFamily: font3)),
+                    foregroundColor: MaterialStatePropertyAll(
+                      selectDark,
+                    ))),
             secondaryHeaderColor: lightThemeSecondaryFont,
             scaffoldBackgroundColor: lightThemeScaffold),
         // darkTheme: ThemeData(

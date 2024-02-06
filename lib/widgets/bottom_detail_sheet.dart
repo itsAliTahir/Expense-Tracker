@@ -6,9 +6,9 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:provider/provider.dart';
-
 import '../provider/category_data_provider.dart';
 import '../provider/models/transaction_model.dart';
+import 'alert_dialog.dart';
 
 OpenModalBottomSheet(BuildContext context, Transaction item) {
   showModalBottomSheet(
@@ -29,7 +29,6 @@ class MyBottomDetailSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     final iconList =
         Provider.of<CategoryDataProvider>(context, listen: false).allCategories;
-    // double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Container(
       color: Colors.transparent,
@@ -156,7 +155,21 @@ class MyBottomDetailSheet extends StatelessWidget {
                       icon: FluentIcons.delete_32_filled,
                       colorsList: [expenseDark, expenseLight],
                       toolTip: "Delete",
-                      onTap: () {}),
+                      onTap: () {
+                        OpenAlertDialog(context,
+                            title: "Confirm Delete",
+                            content: " ",
+                            buttonNames: [
+                              "Cancel",
+                              "Delete"
+                            ],
+                            functions: [
+                              () {
+                                Navigator.pop(context);
+                              },
+                              () {}
+                            ]);
+                      }),
                 ],
               )),
         ],
