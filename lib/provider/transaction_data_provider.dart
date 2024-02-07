@@ -7,7 +7,7 @@ import 'models/transaction_model.dart';
 class TransactionDataProvider with ChangeNotifier {
   final List<Transaction> _myExpensesList = [
     Transaction(
-        const Uuid().v4().toString(),
+        "test id",
         0,
         "My Transaction My Transaction My Transaction",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt tortor eu ante aliquet condimentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris vel ex sed magna suscipit tempus. Fusce vel mauris nunc. Nunc auctor leo vitae velit molestie, non posuere justo volutpat. Integer at tellus ac elit efficitur sollicitudin. Ut accumsan tincidunt ante, eu dictum eros molestie sed. Cras congue orci nec quam vehicula, nec lacinia odio vestibulum. Suspendisse potenti. Curabitur tincidunt sem eu odio accumsan, quis ullamcorper libero blandit. Duis id libero sed odio consequat dictum.",
@@ -133,7 +133,6 @@ class TransactionDataProvider with ChangeNotifier {
   }
 
   void DeleteTransaction(String id) {
-    print(id);
     _myExpensesList.removeWhere((element) => element.id == id);
     notifyListeners();
   }

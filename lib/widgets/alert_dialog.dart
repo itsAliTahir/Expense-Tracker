@@ -36,6 +36,7 @@ class MyAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+        surfaceTintColor: Colors.transparent,
         title: title == "null"
             ? null
             : Text(
