@@ -11,25 +11,27 @@ class MyIncomeExpenses extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TotalIncome =
+    Provider.of<TransactionDataProvider>(context).TotalIncome();
+    Provider.of<TransactionDataProvider>(context).TotalExpense();
+    final totalIncome =
         Provider.of<TransactionDataProvider>(context, listen: false)
-            .TotalIncome;
-    final TotalExpense =
+            .totalIncome;
+    final totalExpense =
         Provider.of<TransactionDataProvider>(context, listen: false)
-            .TotalExpense;
+            .totalExpense;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         GradientBox(
-            amount: TotalIncome(),
+            amount: totalIncome,
             title: "Income",
             gradient1: incomeDark,
             gradient2: incomeLight,
             openDetail: () {
-              if (TotalIncome() != 0) {
+              if (totalIncome != 0) {
                 Navigator.pushNamed(context, routeIEScreen, arguments: [
                   GradientBox(
-                      amount: TotalIncome(),
+                      amount: totalIncome,
                       title: "Income",
                       gradient1: incomeDark,
                       gradient2: incomeLight,
@@ -39,15 +41,15 @@ class MyIncomeExpenses extends StatelessWidget {
               }
             }),
         GradientBox(
-          amount: TotalExpense(),
+          amount: totalExpense,
           title: "Expense",
           gradient1: expenseDark,
           gradient2: expenseLight,
           openDetail: () {
-            if (TotalExpense() != 0) {
+            if (totalExpense != 0) {
               Navigator.pushNamed(context, routeIEScreen, arguments: [
                 GradientBox(
-                    amount: TotalExpense(),
+                    amount: totalExpense,
                     title: "Expense",
                     gradient1: expenseDark,
                     gradient2: expenseLight,

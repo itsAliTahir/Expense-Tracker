@@ -19,8 +19,9 @@ class MyIETransactionsList extends StatefulWidget {
 class _MyIETransactionsListState extends State<MyIETransactionsList> {
   @override
   Widget build(BuildContext context) {
-    final allCategories =
-        Provider.of<CategoryDataProvider>(context, listen: false).allCategories;
+    final allCategories = Provider.of<CategoryDataProvider>(
+      context,
+    ).allCategories;
     final routeName = ModalRoute.of(context)!.settings.name;
 
     return Consumer<CategoryDataProvider>(
@@ -43,7 +44,7 @@ class _MyIETransactionsListState extends State<MyIETransactionsList> {
         return ListView.separated(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           padding: const EdgeInsets.only(top: 0, left: 0, right: 0, bottom: 15),
-          itemCount: itemsList.length,
+          itemCount: itemsList!.length,
           itemBuilder: (BuildContext context, int index) {
             return DelayedDisplay(
               child: Container(
@@ -54,7 +55,7 @@ class _MyIETransactionsListState extends State<MyIETransactionsList> {
                   },
                   horizontalTitleGap: 25,
                   leading: Tooltip(
-                      message: allCategories[itemsList[index].iconId].name,
+                      message: allCategories[itemsList![index].iconId].name,
                       child: Icon(allCategories[itemsList[index].iconId].icon)),
                   title: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

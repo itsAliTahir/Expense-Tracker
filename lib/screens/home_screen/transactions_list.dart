@@ -17,13 +17,12 @@ class MyTransactionsList extends StatelessWidget {
     return Consumer<CategoryDataProvider>(
       builder: (context, categoryData, child) {
         final itemsList =
-            Provider.of<TransactionDataProvider>(context, listen: true)
+            Provider.of<TransactionDataProvider>(context, listen: false)
                 .fullList
                 .where((element) =>
                     categoryData.allSelectedCategories.isEmpty ||
                     categoryData.allSelectedCategories.contains(element.iconId))
                 .toList();
-
         return ListView.separated(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           padding: const EdgeInsets.only(top: 0, left: 0, right: 0, bottom: 60),
@@ -34,6 +33,11 @@ class MyTransactionsList extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 7),
                 child: ListTile(
                   onTap: () {
+                    print(itemsList[index].id);
+                    print(Provider.of<TransactionDataProvider>(context,
+                            listen: false)
+                        .fullList
+                        .length);
                     OpenModalBottomSheet(context, itemsList[index]);
                   },
                   horizontalTitleGap: 25,

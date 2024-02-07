@@ -35,7 +35,7 @@ class _MyIncomeExpenseGraphState extends State<MyIncomeExpenseGraph> {
         : Provider.of<TransactionDataProvider>(context, listen: false)
             .expenseList;
 
-    for (int i = 0; i < data.length; i++) {
+    for (int i = 0; i < data!.length; i++) {
       if (showAverage == false) {
         if (data[i].amount < 0) {
           temp += (data[i].amount * -1);

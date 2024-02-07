@@ -17,9 +17,10 @@ class _MyCurrentBalanceState extends State<MyCurrentBalance> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    final CurrentBalance =
+    final currentBalance =
         Provider.of<TransactionDataProvider>(context, listen: false)
-            .CurrentBalance;
+            .currentBalance;
+
     return Center(
       child: Container(
         margin:
@@ -31,7 +32,7 @@ class _MyCurrentBalanceState extends State<MyCurrentBalance> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               AnimatedFlipCounter(
-                value: CurrentBalance(),
+                value: currentBalance,
                 prefix: "\$",
                 textStyle: const TextStyle(
                     fontFamily: font1,
