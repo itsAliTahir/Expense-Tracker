@@ -1,12 +1,11 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:cash_book_expense_tracker/provider/transaction_data_provider.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'models/category_model.dart';
 import 'models/transaction_model.dart';
 
-class CategoryDataProvider extends TransactionDataProvider {
+class CategoryDataProvider with ChangeNotifier {
   final List<Categories> _allCategories = [
     Categories(0, AvailableCategories.Miscellaneous.toString().split('.').last,
         FluentIcons.puzzle_piece_24_filled),
@@ -49,16 +48,6 @@ class CategoryDataProvider extends TransactionDataProvider {
   }
 
   // Methods
-
-  List<int> CategoriesToShow() {
-    List<int> temp = [];
-    for (int i = 0; i < fullList.length; i++) {
-      temp.add(fullList[i].iconId);
-    }
-    Set<int> unique = Set.from(temp);
-    List<int> sortedUnique = unique.toList()..sort();
-    return sortedUnique;
-  }
 
   void Toggleselection(int index) {
     if (_selectedCategoriesIndex.contains(index)) {

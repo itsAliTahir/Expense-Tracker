@@ -55,6 +55,7 @@ class GradientBox extends StatelessWidget {
                   child: AnimatedFlipCounter(
                     value: amount,
                     prefix: "\$",
+                    duration: const Duration(milliseconds: 1000),
                     textStyle: const TextStyle(
                       decoration: TextDecoration.none,
                       fontFamily: font3,

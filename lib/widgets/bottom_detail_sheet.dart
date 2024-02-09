@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable, non_constant_identifier_names
 
 import 'package:cash_book_expense_tracker/provider/themes_data.dart';
+import 'package:cash_book_expense_tracker/provider/transaction_data_provider.dart';
 import 'package:cash_book_expense_tracker/widgets/circular_gradient_icon_button.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -10,28 +11,29 @@ import '../provider/category_data_provider.dart';
 import '../provider/models/transaction_model.dart';
 import 'alert_dialog.dart';
 
-OpenModalBottomSheet(BuildContext context, Transaction item) {
+OpenModalBottomSheet(BuildContext context, Transaction item, bool showButtons) {
   showModalBottomSheet(
     backgroundColor: Colors.transparent,
     elevation: 0,
     context: context,
     builder: (context) => MyBottomDetailSheet(
       item: item,
+      showButtons: showButtons,
     ),
   );
 }
 
 class MyBottomDetailSheet extends StatelessWidget {
   Transaction item;
-
-  MyBottomDetailSheet({required this.item, super.key});
+  bool showButtons;
+  MyBottomDetailSheet({required this.item, this.showButtons = true, super.key});
 
   @override
   Widget build(BuildContext context) {
     final iconList =
         Provider.of<CategoryDataProvider>(context, listen: false).allCategories;
     final DeleteTransaction =
-        Provider.of<CategoryDataProvider>(context, listen: false)
+        Provider.of<TransactionDataProvider>(context, listen: false)
             .DeleteTransaction;
     double screenHeight = MediaQuery.of(context).size.height;
     return Container(
@@ -50,7 +52,7 @@ class MyBottomDetailSheet extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
             ),
             child: Container(
-              margin: const EdgeInsets.only(top: 50),
+              margin: EdgeInsets.only(top: !showButtons ? 15 : 50),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -142,44 +144,46 @@ class MyBottomDetailSheet extends StatelessWidget {
           Positioned(
               right: 40,
               top: 45,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  MyCircularGradientIconButton(
-                      size: 40,
-                      icon: FluentIcons.edit_32_filled,
-                      colorsList: [incomeDark, incomeLight],
-                      toolTip: "Edit",
-                      onTap: () {}),
-                  const SizedBox(
-                    width: 3,
-                  ),
-                  MyCircularGradientIconButton(
-                      size: 40,
-                      icon: FluentIcons.delete_32_filled,
-                      colorsList: [expenseDark, expenseLight],
-                      toolTip: "Delete",
-                      onTap: () {
-                        OpenAlertDialog(context,
-                            title: "Confirm Delete",
-                            content: " ",
-                            buttonNames: [
-                              "Cancel",
-                              "Delete"
-                            ],
-                            functions: [
-                              () {
-                                Navigator.pop(context);
-                              },
-                              () {
-                                Navigator.pop(context);
-                                Navigator.pop(context);
-                                DeleteTransaction(item.id);
-                              }
-                            ]);
-                      }),
-                ],
-              )),
+              child: !showButtons
+                  ? const SizedBox()
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        MyCircularGradientIconButton(
+                            size: 40,
+                            icon: FluentIcons.edit_32_filled,
+                            colorsList: [incomeDark, incomeLight],
+                            toolTip: "Edit",
+                            onTap: () {}),
+                        const SizedBox(
+                          width: 3,
+                        ),
+                        MyCircularGradientIconButton(
+                            size: 40,
+                            icon: FluentIcons.delete_32_filled,
+                            colorsList: [expenseDark, expenseLight],
+                            toolTip: "Delete",
+                            onTap: () {
+                              OpenAlertDialog(context,
+                                  title: "Confirm Delete",
+                                  content: " ",
+                                  buttonNames: [
+                                    "Cancel",
+                                    "Delete"
+                                  ],
+                                  functions: [
+                                    () {
+                                      Navigator.pop(context);
+                                    },
+                                    () {
+                                      Navigator.pop(context);
+                                      Navigator.pop(context);
+                                      DeleteTransaction(item.id);
+                                    },
+                                  ]);
+                            }),
+                      ],
+                    )),
         ],
       ),
     );

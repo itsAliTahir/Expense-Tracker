@@ -17,42 +17,42 @@ class _MyCurrentBalanceState extends State<MyCurrentBalance> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    final currentBalance =
-        Provider.of<TransactionDataProvider>(context, listen: false)
-            .currentBalance;
 
-    return Center(
-      child: Container(
-        margin:
-            EdgeInsets.symmetric(horizontal: 15, vertical: screenHeight * 0.04),
-        child: FittedBox(
-          fit: BoxFit.contain,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              AnimatedFlipCounter(
-                value: currentBalance,
-                prefix: "\$",
-                textStyle: const TextStyle(
-                    fontFamily: font1,
-                    fontSize: 34,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(
-                height: 3,
-              ),
-              Text(
-                "Current Balance",
-                style: TextStyle(
-                    fontFamily: font1,
-                    letterSpacing: 1,
-                    color: Theme.of(context).secondaryHeaderColor,
-                    fontSize: 13,
-                    fontWeight: FontWeight.bold),
-              ),
-            ],
+    return Consumer<TransactionDataProvider>(
+      builder: (context, value, child) => Center(
+        child: Container(
+          margin: EdgeInsets.symmetric(
+              horizontal: 15, vertical: screenHeight * 0.04),
+          child: FittedBox(
+            fit: BoxFit.contain,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                AnimatedFlipCounter(
+                  value: value.CurrentBalance(),
+                  prefix: "\$",
+                  duration: const Duration(milliseconds: 1000),
+                  textStyle: const TextStyle(
+                      fontFamily: font1,
+                      fontSize: 34,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 3,
+                ),
+                Text(
+                  "Current Balance",
+                  style: TextStyle(
+                      fontFamily: font1,
+                      letterSpacing: 1,
+                      color: Theme.of(context).secondaryHeaderColor,
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
           ),
         ),
       ),

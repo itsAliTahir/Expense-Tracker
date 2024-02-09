@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-
         theme: ThemeData(
             textTheme: const TextTheme(
               titleLarge: TextStyle(
@@ -39,7 +38,7 @@ class MyApp extends StatelessWidget {
                 backgroundColor: lightThemeDrawerBackgroundColor),
             textButtonTheme: TextButtonThemeData(
                 style: ButtonStyle(
-                    textStyle: MaterialStatePropertyAll(TextStyle(
+                    textStyle: const MaterialStatePropertyAll(TextStyle(
                         fontWeight: FontWeight.bold, fontFamily: font3)),
                     foregroundColor: MaterialStatePropertyAll(
                       selectDark,

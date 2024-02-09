@@ -6,60 +6,59 @@ import 'package:provider/provider.dart';
 import '../../provider/transaction_data_provider.dart';
 import '../../widgets/gradient_box.dart';
 
-class MyIncomeExpenses extends StatelessWidget {
+class MyIncomeExpenses extends StatefulWidget {
   const MyIncomeExpenses({super.key});
 
   @override
+  State<MyIncomeExpenses> createState() => _MyIncomeExpensesState();
+}
+
+class _MyIncomeExpensesState extends State<MyIncomeExpenses> {
+  @override
   Widget build(BuildContext context) {
-    Provider.of<TransactionDataProvider>(context).TotalIncome();
-    Provider.of<TransactionDataProvider>(context).TotalExpense();
-    final totalIncome =
-        Provider.of<TransactionDataProvider>(context, listen: false)
-            .totalIncome;
-    final totalExpense =
-        Provider.of<TransactionDataProvider>(context, listen: false)
-            .totalExpense;
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        GradientBox(
-            amount: totalIncome,
-            title: "Income",
-            gradient1: incomeDark,
-            gradient2: incomeLight,
+    return Consumer<TransactionDataProvider>(
+      builder: (context, value, child) => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          GradientBox(
+              amount: value.TotalIncome(),
+              title: "Income",
+              gradient1: incomeDark,
+              gradient2: incomeLight,
+              openDetail: () {
+                if (value.TotalIncome() != 0) {
+                  Navigator.pushNamed(context, routeIEScreen, arguments: [
+                    GradientBox(
+                        amount: value.TotalIncome(),
+                        title: "Income",
+                        gradient1: incomeDark,
+                        gradient2: incomeLight,
+                        openDetail: null),
+                    "Income"
+                  ]);
+                }
+              }),
+          GradientBox(
+            amount: value.TotalExpense(),
+            title: "Expense",
+            gradient1: expenseDark,
+            gradient2: expenseLight,
             openDetail: () {
-              if (totalIncome != 0) {
+              if (value.TotalExpense() != 0) {
                 Navigator.pushNamed(context, routeIEScreen, arguments: [
                   GradientBox(
-                      amount: totalIncome,
-                      title: "Income",
-                      gradient1: incomeDark,
-                      gradient2: incomeLight,
+                      amount: value.TotalExpense(),
+                      title: "Expense",
+                      gradient1: expenseDark,
+                      gradient2: expenseLight,
                       openDetail: null),
-                  "Income"
+                  "Expense"
                 ]);
               }
-            }),
-        GradientBox(
-          amount: totalExpense,
-          title: "Expense",
-          gradient1: expenseDark,
-          gradient2: expenseLight,
-          openDetail: () {
-            if (totalExpense != 0) {
-              Navigator.pushNamed(context, routeIEScreen, arguments: [
-                GradientBox(
-                    amount: totalExpense,
-                    title: "Expense",
-                    gradient1: expenseDark,
-                    gradient2: expenseLight,
-                    openDetail: null),
-                "Expense"
-              ]);
-            }
-          },
-        ),
-      ],
+            },
+          ),
+        ],
+      ),
     );
   }
 }

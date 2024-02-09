@@ -21,6 +21,7 @@ void OpenAlertDialog(
       });
 }
 
+// ignore: must_be_immutable
 class MyAlertDialog extends StatelessWidget {
   String title;
   String content;

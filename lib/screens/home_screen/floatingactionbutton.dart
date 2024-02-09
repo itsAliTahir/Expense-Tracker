@@ -1,6 +1,9 @@
 import 'package:cash_book_expense_tracker/provider/themes_data.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../provider/transaction_data_provider.dart';
 
 class MyFloatingActionButton extends StatelessWidget {
   const MyFloatingActionButton({super.key});
@@ -20,7 +23,10 @@ class MyFloatingActionButton extends StatelessWidget {
       highlightElevation: 0,
       focusElevation: 0,
       enableFeedback: false,
-      onPressed: () {},
+      onPressed: () {
+        Provider.of<TransactionDataProvider>(context, listen: false)
+            .AddNewTransaction();
+      },
       child: Ink(
         width: double.infinity,
         height: double.infinity,

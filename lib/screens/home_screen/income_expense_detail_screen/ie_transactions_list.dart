@@ -1,5 +1,4 @@
 // ignore_for_file: must_be_immutable
-
 import 'package:cash_book_expense_tracker/provider/category_data_provider.dart';
 import 'package:cash_book_expense_tracker/provider/themes_data.dart';
 import 'package:delayed_display/delayed_display.dart';
@@ -30,15 +29,21 @@ class _MyIETransactionsListState extends State<MyIETransactionsList> {
                 widget.screen == "Income"
             ? Provider.of<TransactionDataProvider>(context, listen: true)
                 .incomeList
+                ?.reversed
+                .toList()
             : routeName == routeIEScreen && widget.screen == "Expense"
                 ? Provider.of<TransactionDataProvider>(context, listen: true)
                     .expenseList
+                    ?.reversed
+                    .toList()
                 : Provider.of<TransactionDataProvider>(context, listen: true)
                     .fullList
                     .where((element) =>
                         categoryData.allSelectedCategories.isEmpty ||
                         categoryData.allSelectedCategories
                             .contains(element.iconId))
+                    .toList()
+                    .reversed
                     .toList();
 
         return ListView.separated(
@@ -51,11 +56,11 @@ class _MyIETransactionsListState extends State<MyIETransactionsList> {
                 margin: const EdgeInsets.symmetric(horizontal: 7),
                 child: ListTile(
                   onTap: () {
-                    OpenModalBottomSheet(context, itemsList[index]);
+                    OpenModalBottomSheet(context, itemsList[index], false);
                   },
                   horizontalTitleGap: 25,
                   leading: Tooltip(
-                      message: allCategories[itemsList![index].iconId].name,
+                      message: allCategories[itemsList[index].iconId].name,
                       child: Icon(allCategories[itemsList[index].iconId].icon)),
                   title: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
