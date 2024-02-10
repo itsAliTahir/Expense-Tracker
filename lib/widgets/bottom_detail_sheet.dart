@@ -102,12 +102,13 @@ class MyBottomDetailSheet extends StatelessWidget {
                           : "No Description",
                       textAlign: TextAlign.justify,
                       style: TextStyle(
-                          fontFamily: font2,
-                          color: item.description != " "
-                              ? const Color.fromARGB(255, 73, 69, 79)
-                              : Theme.of(context).secondaryHeaderColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold),
+                        fontFamily: font2,
+                        color: item.description != " "
+                            ? const Color.fromARGB(255, 73, 69, 79)
+                            : Theme.of(context).secondaryHeaderColor,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ],
                 ),
@@ -179,6 +180,9 @@ class MyBottomDetailSheet extends StatelessWidget {
                                       Navigator.pop(context);
                                       Navigator.pop(context);
                                       DeleteTransaction(item.id);
+                                      Provider.of<CategoryDataProvider>(context,
+                                              listen: false)
+                                          .RemoveSelection(item.iconId);
                                     },
                                   ]);
                             }),

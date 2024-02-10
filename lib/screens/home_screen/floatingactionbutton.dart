@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../provider/transaction_data_provider.dart';
+import '../../widgets/add_new_transaction.dart';
 
 class MyFloatingActionButton extends StatelessWidget {
   const MyFloatingActionButton({super.key});
@@ -24,8 +25,9 @@ class MyFloatingActionButton extends StatelessWidget {
       focusElevation: 0,
       enableFeedback: false,
       onPressed: () {
-        Provider.of<TransactionDataProvider>(context, listen: false)
-            .AddNewTransaction();
+        OpenShowDialog(context);
+        // Provider.of<TransactionDataProvider>(context, listen: false)
+        //     .AddNewTransaction();
       },
       child: Ink(
         width: double.infinity,

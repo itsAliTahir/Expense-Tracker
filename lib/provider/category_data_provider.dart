@@ -56,7 +56,15 @@ class CategoryDataProvider with ChangeNotifier {
       _selectedCategoriesIndex.add(index);
     }
     _selectedCategoriesIndex.sort();
+    notifyListeners();
+    return;
+  }
 
+  void RemoveSelection(int index) {
+    if (_selectedCategoriesIndex.contains(index)) {
+      _selectedCategoriesIndex.removeWhere((element) => element == index);
+    }
+    _selectedCategoriesIndex.sort();
     notifyListeners();
     return;
   }
