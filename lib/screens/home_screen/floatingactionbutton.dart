@@ -1,10 +1,7 @@
 import 'package:cash_book_expense_tracker/provider/themes_data.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../../provider/transaction_data_provider.dart';
-import '../../widgets/add_new_transaction.dart';
+import 'add_new_transaction.dart';
 
 class MyFloatingActionButton extends StatelessWidget {
   const MyFloatingActionButton({super.key});
