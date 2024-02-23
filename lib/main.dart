@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+            primaryColor: Colors.blueAccent,
             textTheme: const TextTheme(
               titleLarge: TextStyle(
                 color: Colors.black,

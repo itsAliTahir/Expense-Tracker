@@ -32,16 +32,12 @@ class MyDrawer extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           minLeadingWidth: 30,
           leading: Icon(icon,
-              color: routeName == myRouteName
-                  ? Colors.white
-                  : const Color.fromARGB(255, 73, 69, 79)),
+              color: routeName == myRouteName ? Colors.white : iconColor),
           title: Text(
             title,
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: routeName == myRouteName
-                  ? Colors.white
-                  : const Color.fromARGB(255, 73, 69, 79),
+              color: routeName == myRouteName ? Colors.white : iconColor,
               fontSize: 15,
               fontFamily: font1,
             ),

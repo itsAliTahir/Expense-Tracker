@@ -22,6 +22,8 @@ Color expenseLight = const Color.fromARGB(255, 251, 146, 131);
 Color selectDark = const Color.fromARGB(255, 0, 176, 158);
 Color selectLight = const Color.fromARGB(255, 79, 220, 154);
 Color selectDim = const Color.fromARGB(255, 219, 255, 242);
+Color iconColor = const Color.fromARGB(255, 73, 69, 79);
+Color fieldColor = const Color.fromARGB(255, 117, 117, 117);
 
 // Fonts
 const String font1 = "Raleway";

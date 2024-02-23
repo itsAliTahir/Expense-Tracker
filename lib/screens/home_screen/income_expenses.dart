@@ -21,6 +21,7 @@ class _MyIncomeExpensesState extends State<MyIncomeExpenses> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           GradientBox(
+              amountEnable: true,
               amount: value.TotalIncome(),
               title: "Income",
               gradient1: incomeDark,
@@ -29,6 +30,7 @@ class _MyIncomeExpensesState extends State<MyIncomeExpenses> {
                 if (value.TotalIncome() != 0) {
                   Navigator.pushNamed(context, routeIEScreen, arguments: [
                     GradientBox(
+                        amountEnable: true,
                         amount: value.TotalIncome(),
                         title: "Income",
                         gradient1: incomeDark,
@@ -39,6 +41,7 @@ class _MyIncomeExpensesState extends State<MyIncomeExpenses> {
                 }
               }),
           GradientBox(
+            amountEnable: true,
             amount: value.TotalExpense(),
             title: "Expense",
             gradient1: expenseDark,
@@ -47,6 +50,7 @@ class _MyIncomeExpensesState extends State<MyIncomeExpenses> {
               if (value.TotalExpense() != 0) {
                 Navigator.pushNamed(context, routeIEScreen, arguments: [
                   GradientBox(
+                      amountEnable: true,
                       amount: value.TotalExpense(),
                       title: "Expense",
                       gradient1: expenseDark,

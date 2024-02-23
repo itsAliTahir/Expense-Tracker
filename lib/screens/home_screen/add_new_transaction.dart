@@ -1,7 +1,7 @@
-import 'dart:ffi';
-
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import '../../provider/themes_data.dart';
+import '../../widgets/gradient_box.dart';
 
 void OpenShowDialog(BuildContext context) {
   showDialog(
@@ -9,6 +9,7 @@ void OpenShowDialog(BuildContext context) {
       builder: (BuildContext context) => const MyAddTransactionDialog());
 }
 
+bool isCategorySelected = false;
 Widget DateTimeContainerWidget(
     {required double width,
     required IconData icon,
@@ -41,9 +42,14 @@ Widget DateTimeContainerWidget(
   );
 }
 
-class MyAddTransactionDialog extends StatelessWidget {
+class MyAddTransactionDialog extends StatefulWidget {
   const MyAddTransactionDialog({super.key});
 
+  @override
+  State<MyAddTransactionDialog> createState() => _MyAddTransactionDialogState();
+}
+
+class _MyAddTransactionDialogState extends State<MyAddTransactionDialog> {
   @override
   Widget build(BuildContext context) {
     print(MediaQuery.of(context).size.width);
@@ -51,141 +57,228 @@ class MyAddTransactionDialog extends StatelessWidget {
     return Dialog(
       backgroundColor: Colors.white,
       surfaceTintColor: Colors.transparent,
-      insetPadding: EdgeInsets.all(30),
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-              margin: const EdgeInsets.only(top: 20, right: 10, left: 10),
-              child: screenWidth >= 290
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        DateTimeContainerWidget(
-                          width: 90,
-                          icon: FluentIcons.clock_24_regular,
-                          string: "15:00 AM",
-                          onTap: () {},
-                        ),
-                        DateTimeContainerWidget(
-                          width: 110,
-                          icon: FluentIcons.calendar_24_regular,
-                          string: "Feb 21, 2024",
-                          onTap: () {},
-                        ),
-                      ],
-                    )
-                  : Column(
-                      children: [
-                        FittedBox(
-                          fit: BoxFit.contain,
-                          child: DateTimeContainerWidget(
+      insetPadding: const EdgeInsets.all(30),
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(top: 20, right: 10, left: 10),
+                child: screenWidth >= 300
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          DateTimeContainerWidget(
                             width: 90,
                             icon: FluentIcons.clock_24_regular,
                             string: "15:00 AM",
                             onTap: () {},
                           ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        FittedBox(
-                          fit: BoxFit.contain,
-                          child: DateTimeContainerWidget(
+                          DateTimeContainerWidget(
                             width: 110,
                             icon: FluentIcons.calendar_24_regular,
                             string: "Feb 21, 2024",
                             onTap: () {},
                           ),
-                        ),
-                      ],
-                    ),
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 15,
-                right: 15,
-                top: 15,
-                bottom: 5,
+                        ],
+                      )
+                    : Column(
+                        children: [
+                          FittedBox(
+                            fit: BoxFit.contain,
+                            child: DateTimeContainerWidget(
+                              width: 90,
+                              icon: FluentIcons.clock_24_regular,
+                              string: "15:00 AM",
+                              onTap: () {},
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          FittedBox(
+                            fit: BoxFit.contain,
+                            child: DateTimeContainerWidget(
+                              width: 110,
+                              icon: FluentIcons.calendar_24_regular,
+                              string: "Feb 21, 2024",
+                              onTap: () {},
+                            ),
+                          ),
+                        ],
+                      ),
               ),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  labelText: "Title",
-                  border: OutlineInputBorder(),
+              const SizedBox(
+                height: 5,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                  top: 15,
+                  bottom: 5,
                 ),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  width: (MediaQuery.of(context).size.width * 0.9) - 135,
-                  height: 50,
-                  margin: const EdgeInsets.only(left: 15, bottom: 15, top: 10),
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: "Amount",
-                      border: OutlineInputBorder(),
-                    ),
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: "Title",
+                    border: OutlineInputBorder(),
                   ),
                 ),
-                SizedBox(
-                  width: 75,
-                  height: 60,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        right: 15,
-                        child: Container(
-                          margin: const EdgeInsets.only(top: 3),
-                          width: 50,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color:
-                                    const Color.fromARGB(255, 117, 117, 117)),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
+              ),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: (screenWidth * 0.6) - 80,
+                      height: 50,
+                      margin: const EdgeInsets.only(bottom: 15, top: 10),
+                      child: TextFormField(
+                        decoration: const InputDecoration(
+                          labelText: "Amount",
+                          border: OutlineInputBorder(),
                         ),
                       ),
-                      Positioned(
-                          top: -4,
-                          left: 19,
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 3),
-                            color: Colors.white,
-                            child: const Text(
-                              "Type",
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 92, 92, 92),
-                                fontSize: 11,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isCategorySelected = !isCategorySelected;
+                        });
+                      },
+                      child: SizedBox(
+                        width: (screenWidth * 0.4) - 40,
+                        height: 60,
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              // right: 15,
+                              child: Container(
+                                margin: const EdgeInsets.only(top: 3),
+                                width: (screenWidth * 0.3),
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: isCategorySelected ? 2 : 1.2,
+                                      color: isCategorySelected
+                                          ? selectDark
+                                          : fieldColor),
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    screenWidth > 265
+                                        ? SizedBox(
+                                            width: screenWidth * 0.2 - 15,
+                                            height: 22,
+                                            child: const Center(
+                                                child: FittedBox(
+                                                    fit: BoxFit.contain,
+                                                    child: Text("Misc"))))
+                                        : const SizedBox(),
+                                    screenWidth > 265
+                                        ? Container(
+                                            width: 1,
+                                            height: 30,
+                                            color: fieldColor,
+                                          )
+                                        : const SizedBox(),
+                                    Icon(
+                                      FluentIcons.puzzle_piece_20_filled,
+                                      color: iconColor,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          )),
-                    ],
+                            Positioned(
+                                top: -4,
+                                left: 9,
+                                child: Container(
+                                  padding:
+                                      const EdgeInsets.only(left: 3, right: 5),
+                                  color: Colors.white,
+                                  child: screenWidth > 280
+                                      ? Text(
+                                          "Category",
+                                          style: TextStyle(
+                                            color: isCategorySelected
+                                                ? selectDark
+                                                : iconColor,
+                                            fontSize: 11.5,
+                                          ),
+                                        )
+                                      : Text(
+                                          "Type",
+                                          style: TextStyle(
+                                            color: iconColor,
+                                            fontSize: 11.5,
+                                          ),
+                                        ),
+                                )),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                  bottom: 5,
+                ),
+                child: TextFormField(
+                  maxLines: 3,
+                  decoration: const InputDecoration(
+                    labelText: "Desciption",
+                    border: OutlineInputBorder(),
                   ),
                 ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 15,
-                right: 15,
-                bottom: 5,
               ),
-              child: TextFormField(
-                maxLines: 3,
-                decoration: const InputDecoration(
-                  labelText: "Desciption",
-                  border: OutlineInputBorder(),
-                ),
-              ),
-            ),
-          ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: screenWidth <= 275
+                        ? screenWidth * 0.27
+                        : screenWidth * 0.3,
+                    height: 60,
+                    margin:
+                        const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
+                    child: GradientBox(
+                        amountEnable: false,
+                        amount: 0,
+                        title: "Cash In",
+                        gradient1: incomeDark,
+                        gradient2: incomeLight,
+                        openDetail: () {}),
+                  ),
+                  Container(
+                    width: screenWidth <= 275
+                        ? screenWidth * 0.27
+                        : screenWidth * 0.3,
+                    height: 60,
+                    margin:
+                        const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
+                    child: GradientBox(
+                        amountEnable: false,
+                        amount: 0,
+                        title: "Cash Out",
+                        gradient1: expenseDark,
+                        gradient2: expenseLight,
+                        openDetail: () {}),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

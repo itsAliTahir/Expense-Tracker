@@ -5,13 +5,15 @@ import '../provider/themes_data.dart';
 
 // ignore: must_be_immutable
 class GradientBox extends StatelessWidget {
+  bool amountEnable;
   num amount;
   String title;
   Color gradient1;
   Color gradient2;
   void Function()? openDetail;
   GradientBox(
-      {required this.amount,
+      {required this.amountEnable,
+      required this.amount,
       required this.title,
       required this.gradient1,
       required this.gradient2,
@@ -26,13 +28,23 @@ class GradientBox extends StatelessWidget {
       child: Bounceable(
         onTap: () {},
         child: GestureDetector(
-          onTap: amount != 0 ? openDetail : null,
+          onTap: amountEnable && amount != 0 ? openDetail : null,
           child: Container(
             width: screenWidth * 0.4,
             height: 70,
-            padding: const EdgeInsets.all(3),
+            padding: amountEnable
+                ? const EdgeInsets.all(3)
+                : const EdgeInsets.all(0),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(3),
+              borderRadius: !amountEnable && title == "Cash In"
+                  ? const BorderRadius.only(
+                      bottomLeft: Radius.circular(30),
+                      topLeft: Radius.circular(30))
+                  : !amountEnable && title == "Cash Out"
+                      ? const BorderRadius.only(
+                          bottomRight: Radius.circular(30),
+                          topRight: Radius.circular(30))
+                      : BorderRadius.circular(3),
               boxShadow: const [
                 BoxShadow(
                   color: Colors.grey,
@@ -52,30 +64,43 @@ class GradientBox extends StatelessWidget {
               children: [
                 FittedBox(
                   fit: BoxFit.contain,
-                  child: AnimatedFlipCounter(
-                    value: amount,
-                    prefix: "\$",
-                    duration: const Duration(milliseconds: 1000),
-                    textStyle: const TextStyle(
-                      decoration: TextDecoration.none,
-                      fontFamily: font3,
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  child: amountEnable
+                      ? AnimatedFlipCounter(
+                          value: amount,
+                          prefix: "\$",
+                          duration: const Duration(milliseconds: 1000),
+                          textStyle: const TextStyle(
+                            decoration: TextDecoration.none,
+                            fontFamily: font3,
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
+                      : Text(
+                          title,
+                          style: TextStyle(
+                            decoration: TextDecoration.none,
+                            fontFamily: font3,
+                            color: Colors.white,
+                            fontSize: screenWidth <= 350 ? 13 : 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                 ),
-                Text(
-                  title,
-                  style: const TextStyle(
-                    decoration: TextDecoration.none,
-                    fontFamily: font1,
-                    letterSpacing: 1,
-                    color: Colors.white,
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                amountEnable
+                    ? Text(
+                        title,
+                        style: const TextStyle(
+                          decoration: TextDecoration.none,
+                          fontFamily: font1,
+                          letterSpacing: 1,
+                          color: Colors.white,
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    : const SizedBox(),
               ],
             ),
           ),
