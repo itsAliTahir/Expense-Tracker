@@ -16,13 +16,14 @@ class MyCurrentBalance extends StatefulWidget {
 class _MyCurrentBalanceState extends State<MyCurrentBalance> {
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
+    // double screenHeight = MediaQuery.of(context).size.height;
 
     return Consumer<TransactionDataProvider>(
       builder: (context, value, child) => Center(
         child: Container(
-          margin: EdgeInsets.symmetric(
-              horizontal: 15, vertical: screenHeight * 0.04),
+          margin: const EdgeInsets.all(10),
+          // margin: EdgeInsets.symmetric(
+          //     horizontal: 15, vertical: screenHeight * 0.04),
           child: FittedBox(
             fit: BoxFit.contain,
             child: Column(

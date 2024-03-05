@@ -1,3 +1,4 @@
+import 'package:cash_book_expense_tracker/widgets/datetime_picker.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import '../../provider/themes_data.dart';
@@ -10,6 +11,12 @@ void OpenShowDialog(BuildContext context) {
 }
 
 bool isCategorySelected = false;
+var _titleController = TextEditingController();
+var _amountController = TextEditingController();
+var _descriptionController = TextEditingController();
+var _titleFocus = FocusNode();
+var _amountFocus = FocusNode();
+var _descriptionFocus = FocusNode();
 Widget DateTimeContainerWidget(
     {required double width,
     required IconData icon,
@@ -74,7 +81,10 @@ class _MyAddTransactionDialogState extends State<MyAddTransactionDialog> {
                             width: 90,
                             icon: FluentIcons.clock_24_regular,
                             string: "15:00 AM",
-                            onTap: () {},
+                            onTap: () {
+                              MyDateTimePicker obj = MyDateTimePicker();
+                              obj.presentDatePicker(context);
+                            },
                           ),
                           DateTimeContainerWidget(
                             width: 110,
@@ -121,10 +131,17 @@ class _MyAddTransactionDialogState extends State<MyAddTransactionDialog> {
                   bottom: 5,
                 ),
                 child: TextFormField(
-                  decoration: const InputDecoration(
-                    labelText: "Title",
-                    border: OutlineInputBorder(),
-                  ),
+                  controller: _titleController,
+                  focusNode: _titleFocus,
+                  decoration: InputDecoration(
+                      labelText: "Title",
+                      labelStyle: TextStyle(
+                          color: iconColor,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: font1),
+                      border: const OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: selectDark, width: 2))),
                 ),
               ),
               Container(
@@ -137,27 +154,39 @@ class _MyAddTransactionDialogState extends State<MyAddTransactionDialog> {
                       height: 50,
                       margin: const EdgeInsets.only(bottom: 15, top: 10),
                       child: TextFormField(
-                        decoration: const InputDecoration(
+                        controller: _amountController,
+                        focusNode: _amountFocus,
+                        decoration: InputDecoration(
                           labelText: "Amount",
-                          border: OutlineInputBorder(),
+                          labelStyle: TextStyle(
+                              color: iconColor,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: font1),
+                          border: const OutlineInputBorder(),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: selectDark, width: 2)),
                         ),
                       ),
                     ),
                     GestureDetector(
                       onTap: () {
                         setState(() {
+                          _titleFocus.unfocus();
+                          _amountFocus.unfocus();
+                          _descriptionFocus.unfocus();
                           isCategorySelected = !isCategorySelected;
                         });
                       },
                       child: SizedBox(
                         width: (screenWidth * 0.4) - 40,
-                        height: 60,
+                        height: 62,
                         child: Stack(
                           children: [
                             Positioned(
                               // right: 15,
                               child: Container(
-                                margin: const EdgeInsets.only(top: 3),
+                                margin: const EdgeInsets.only(top: 3.4),
                                 width: (screenWidth * 0.3),
                                 height: 50,
                                 decoration: BoxDecoration(
@@ -197,7 +226,7 @@ class _MyAddTransactionDialogState extends State<MyAddTransactionDialog> {
                               ),
                             ),
                             Positioned(
-                                top: -4,
+                                top: -3.5,
                                 left: 9,
                                 child: Container(
                                   padding:
@@ -207,16 +236,18 @@ class _MyAddTransactionDialogState extends State<MyAddTransactionDialog> {
                                       ? Text(
                                           "Category",
                                           style: TextStyle(
-                                            color: isCategorySelected
-                                                ? selectDark
-                                                : iconColor,
-                                            fontSize: 11.5,
+                                            color: iconColor,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: font1,
+                                            fontSize: 11,
                                           ),
                                         )
                                       : Text(
                                           "Type",
                                           style: TextStyle(
                                             color: iconColor,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: font1,
                                             fontSize: 11.5,
                                           ),
                                         ),
@@ -235,10 +266,18 @@ class _MyAddTransactionDialogState extends State<MyAddTransactionDialog> {
                   bottom: 5,
                 ),
                 child: TextFormField(
+                  controller: _descriptionController,
+                  focusNode: _descriptionFocus,
                   maxLines: 3,
-                  decoration: const InputDecoration(
-                    labelText: "Desciption",
-                    border: OutlineInputBorder(),
+                  decoration: InputDecoration(
+                    labelText: "Description",
+                    labelStyle: TextStyle(
+                        color: iconColor,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: font1),
+                    border: const OutlineInputBorder(),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: selectDark, width: 2)),
                   ),
                 ),
               ),

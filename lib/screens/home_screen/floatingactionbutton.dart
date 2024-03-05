@@ -23,8 +23,6 @@ class MyFloatingActionButton extends StatelessWidget {
       enableFeedback: false,
       onPressed: () {
         OpenShowDialog(context);
-        // Provider.of<TransactionDataProvider>(context, listen: false)
-        //     .AddNewTransaction();
       },
       child: Ink(
         width: double.infinity,

@@ -61,7 +61,8 @@ class _MyIncomeExpenseGraphState extends State<MyIncomeExpenseGraph> {
                 color: widget.args[1] as String == "Income"
                     ? incomeDark
                     : expenseDark,
-                fontWeight: FontWeight.bold))
+                fontWeight: FontWeight.bold,
+                fontSize: 13))
       ];
       return test;
     }
