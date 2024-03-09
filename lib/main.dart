@@ -34,6 +34,10 @@ class MyApp extends StatelessWidget {
                 decoration: TextDecoration.none,
               ),
             ),
+            datePickerTheme: DatePickerThemeData(
+              backgroundColor: Colors.white,
+            ),
+            timePickerTheme: TimePickerThemeData(backgroundColor: Colors.white),
             appBarTheme: AppBarTheme(color: lightThemeScaffold),
             drawerTheme: DrawerThemeData(
                 backgroundColor: lightThemeDrawerBackgroundColor),

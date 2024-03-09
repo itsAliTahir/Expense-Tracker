@@ -21,7 +21,7 @@ class _MyCurrentBalanceState extends State<MyCurrentBalance> {
     return Consumer<TransactionDataProvider>(
       builder: (context, value, child) => Center(
         child: Container(
-          margin: const EdgeInsets.all(10),
+          margin: const EdgeInsets.all(2),
           // margin: EdgeInsets.symmetric(
           //     horizontal: 15, vertical: screenHeight * 0.04),
           child: FittedBox(

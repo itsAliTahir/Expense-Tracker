@@ -28,7 +28,11 @@ class GradientBox extends StatelessWidget {
       child: Bounceable(
         onTap: () {},
         child: GestureDetector(
-          onTap: amountEnable && amount != 0 ? openDetail : null,
+          onTap: amountEnable && amount != 0
+              ? openDetail
+              : title == "Cash In" || title == "Cash Out"
+                  ? openDetail
+                  : null,
           child: Container(
             width: screenWidth * 0.4,
             height: 70,
