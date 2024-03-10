@@ -26,7 +26,7 @@ class MyTransactionsList extends StatelessWidget {
 
         return ListView.separated(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-          padding: const EdgeInsets.only(top: 0, left: 0, right: 0, bottom: 60),
+          padding: const EdgeInsets.only(top: 0, left: 0, right: 0, bottom: 80),
           itemCount: itemsList.length,
           itemBuilder: (BuildContext context, int index) {
             return DelayedDisplay(

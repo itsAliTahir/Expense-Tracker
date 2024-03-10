@@ -131,9 +131,18 @@ class TransactionDataProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void AddNewTransaction() {
-    _myTransactionsList.add(Transaction(
-        "id12", 1, "adwa", "dwadwadswa", 1200, DateTime.now().toString()));
+  void AddNewTransaction(
+      {required String title,
+      required String description,
+      required num amount,
+      required isIncome}) {
+    if (isIncome == false) {
+      _myTransactionsList.add(Transaction(Uuid().v4().toString(), 1, title,
+          description, amount * -1, DateTime.now().toString()));
+    } else {
+      _myTransactionsList.add(Transaction(Uuid().v4().toString(), 1, title,
+          description, amount, DateTime.now().toString()));
+    }
     notifyListeners();
   }
 }

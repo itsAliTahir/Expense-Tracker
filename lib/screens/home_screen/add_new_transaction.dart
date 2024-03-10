@@ -1,6 +1,10 @@
+import 'package:cash_book_expense_tracker/provider/transaction_data_provider.dart';
 import 'package:cash_book_expense_tracker/widgets/datetime_picker.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import '../../provider/category_data_provider.dart';
 import '../../provider/themes_data.dart';
 import '../../widgets/gradient_box.dart';
 
@@ -60,8 +64,11 @@ class MyAddTransactionDialog extends StatefulWidget {
 class _MyAddTransactionDialogState extends State<MyAddTransactionDialog> {
   @override
   Widget build(BuildContext context) {
+    final AddNewTransaction =
+        Provider.of<TransactionDataProvider>(context).AddNewTransaction;
     print(MediaQuery.of(context).size.width);
     double screenWidth = MediaQuery.of(context).size.width;
+
     return Dialog(
       backgroundColor: Colors.white,
       surfaceTintColor: Colors.transparent,
@@ -151,7 +158,7 @@ class _MyAddTransactionDialogState extends State<MyAddTransactionDialog> {
                                 BorderSide(color: selectDark, width: 2))),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please Enter Title';
+                        return 'Enter Title';
                       }
                       return null;
                     },
@@ -161,12 +168,18 @@ class _MyAddTransactionDialogState extends State<MyAddTransactionDialog> {
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         width: (screenWidth * 0.6) - 80,
-                        height: 50,
-                        margin: const EdgeInsets.only(bottom: 15, top: 10),
+                        // height: 50,
+                        margin: const EdgeInsets.only(bottom: 15, top: 8),
                         child: TextFormField(
+                          keyboardType: TextInputType.number,
+                          inputFormatters: <TextInputFormatter>[
+                            FilteringTextInputFormatter.allow(
+                                RegExp(r'^\d+\.?\d{0,2}')),
+                          ],
                           controller: _amountController,
                           focusNode: _amountFocus,
                           decoration: InputDecoration(
@@ -182,7 +195,9 @@ class _MyAddTransactionDialogState extends State<MyAddTransactionDialog> {
                           ),
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'Please Enter Title';
+                              return 'Enter Amount';
+                            } else if (double.tryParse(value) == null) {
+                              return 'Invalid Amount';
                             }
                             return null;
                           },
@@ -199,15 +214,15 @@ class _MyAddTransactionDialogState extends State<MyAddTransactionDialog> {
                         },
                         child: SizedBox(
                           width: (screenWidth * 0.4) - 40,
-                          height: 62,
+                          height: 66,
                           child: Stack(
                             children: [
                               Positioned(
                                 // right: 15,
                                 child: Container(
-                                  margin: const EdgeInsets.only(top: 3.4),
+                                  margin: const EdgeInsets.only(top: 8),
                                   width: (screenWidth * 0.3),
-                                  height: 50,
+                                  height: 55,
                                   decoration: BoxDecoration(
                                     border: Border.all(
                                         width: isCategorySelected ? 2 : 1.2,
@@ -245,22 +260,20 @@ class _MyAddTransactionDialogState extends State<MyAddTransactionDialog> {
                                 ),
                               ),
                               Positioned(
-                                  top: -3.5,
+                                  top: 0,
                                   left: 9,
                                   child: Container(
                                     padding: const EdgeInsets.only(
                                         left: 3, right: 5),
                                     color: Colors.white,
                                     child: screenWidth > 280
-                                        ? Text(
-                                            "Category",
+                                        ? Text("Category",
                                             style: TextStyle(
                                               color: iconColor,
                                               fontWeight: FontWeight.bold,
                                               fontFamily: font1,
                                               fontSize: 11,
-                                            ),
-                                          )
+                                            ))
                                         : Text(
                                             "Type",
                                             style: TextStyle(
@@ -300,7 +313,7 @@ class _MyAddTransactionDialogState extends State<MyAddTransactionDialog> {
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please Enter Title';
+                        _descriptionController.text = " ";
                       }
                       return null;
                     },
@@ -324,9 +337,13 @@ class _MyAddTransactionDialogState extends State<MyAddTransactionDialog> {
                           gradient2: incomeLight,
                           openDetail: () {
                             if (_formKey.currentState!.validate()) {
-                              print("object");
+                              Navigator.pop(context);
+                              AddNewTransaction(
+                                  title: _titleController.text,
+                                  amount: num.parse(_amountController.text),
+                                  description: _descriptionController.text,
+                                  isIncome: true);
                             }
-                            print("object2");
                           }),
                     ),
                     Container(
@@ -342,7 +359,16 @@ class _MyAddTransactionDialogState extends State<MyAddTransactionDialog> {
                           title: "Cash Out",
                           gradient1: expenseDark,
                           gradient2: expenseLight,
-                          openDetail: () {}),
+                          openDetail: () {
+                            if (_formKey.currentState!.validate()) {
+                              Navigator.pop(context);
+                              AddNewTransaction(
+                                  title: _titleController.text,
+                                  amount: num.parse(_amountController.text),
+                                  description: _descriptionController.text,
+                                  isIncome: false);
+                            }
+                          }),
                     ),
                   ],
                 )
